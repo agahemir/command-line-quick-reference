@@ -420,37 +420,37 @@ option  | description
 
 Karakter | Açıklama
 ---       | ---
-[abc]     | matches any one of the characters in the square brackets
-[a-d]     | matches any one of the characters in the range specified in the square brackets
-^start    | matches the pattern only if the pattern is at the start of the line 
-end$      | matches the pattern only if the pattern is at the end of the line
-[^abc]    | matches any one character that is NOT present in the square brackets
-[^a-d]    | matches any one character that is NOT present in the range
-.         | matches any one character
-\*        | mathces 0 or more occurences of the preceding character
-.*        | matches zero or more of any character
+[abc]     | Köşeli parantez içindeki karakterlerden herhangi biriyle eşleşir.
+[a-d]     | Köşeli parantez içinde belirtilen aralıktaki karakterlerden herhangi biriyle eşleşir.
+^start    | Yalnızca desen satırın başındaysa desenle eşleşir.
+end$      | Yalnızca desen satırın sonundaysa desenle eşleşir.
+[^abc] | Köşeli parantez içinde OLMAYAN herhangi bir karakterle eşleşir.
+[^a-d] | Aralıkta OLMAYAN herhangi bir karakterle eşleşir.
+. | Herhangi bir karakterle eşleşir.
+\* | Önceki karakterin 0 veya daha fazla tekrarını hesaplar.
+.* | Herhangi bir karakterin sıfır veya daha fazlasıyla eşleşir.
 
-## 9.3. Examples
+## 9.3. Örnekler
 
-- Match any one character<br>
+- Herhangi bir karakterle eşleşme:<br>
   ```grep "[Tt]his" demo.txt```
 
-- Search for line starting with the search pattern<br>
+- Arama düzeniyle başlayan satırı arayın: <br>
   ```grep "^last" demo.txt```
 
-- Search for line ending with the search patter<br>
+- Arama modeliyle biten satırı arayın:<br>
   ```grep "regular$" demo.txt```
 
-- Search for line with a character in specified range<br>
+- Belirtilen aralıkta bir karaktere sahip satırı arayın:<br>
   ```grep "[0-9]" demo.txt```
 
-- Search for line without a character in specified range<br>
+- Belirtilen aralıkta karakter içermeyen satırı arayın: <br>
   ```grep "[^0-9]" demo.txt```
 
-- Search for a line where the middle characters are not known<br>
+- Ortadaki karakterlerin bilinmediği bir satır arayın<br>
   ```grep "line.*regular" demo.txt```
 
-**Note:** grep can have regular expressions in the search pattern part, and can have wildcards in the files to search section.
+**Not:** grep, arama deseni bölümünde normal ifadelere sahip olabilir ve aranacak dosyalar bölümünde joker karakterlere sahip olabilir.
 
 # 10. ```find```
 - the ```find``` command is used to search and locate the list of files and directories
