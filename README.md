@@ -2,23 +2,23 @@
   - [1.1. İzlenim](#11-izlenim)
 - [2. Temeller](#2-temeller)
   - [2.1. Yaygın Kullanılan Komutlar](#21-yaygın-kullanılan-komutlar)
-  - [2.2. Kısayollar](#22-shortcuts)
-    - [2.2.1. Gezinti](#221-navigation)
-    - [2.2.2. Düzenleme](#222-editing)
-    - [2.2.3. Geçmişten Geri Çağırma](#223-recall-from-history)
-- [3. Streams, Pipes and Redirects](#3-streams-pipes-and-redirects)
-  - [3.1. Streams](#31-streams)
-  - [3.2. Redirections](#32-redirections)
-    - [3.2.1. Types](#321-types)
-    - [3.2.2. Additional Examples](#322-additional-examples)
+  - [2.2. Kısayollar](#22-kısayollar)
+    - [2.2.1. Gezinti](#221-gezinti)
+    - [2.2.2. Düzenleme](#222-düzenleme)
+    - [2.2.3. Geçmişten Geri Çağırma](#223-geçmişten-geri-çağırma)
+- [3. Stream'lar, Pipe'lar ve Yönlendirmeler](#3-streams-pipes-and-redirects)
+  - [3.1. Stream'lar](#31-stream)
+  - [3.2. Yeniden Yönlendirmeler](#32-yeniden-yönlendirmeler)
+    - [3.2.1. Biçimler](#321-biçimler)
+    - [3.2.2. Ek Örnekler](#322-ek-örnekler)
       - [3.2.2.1. Send standard output to sout.txt and standard error to serr.txt](#3221-send-standard-output-to-souttxt-and-standard-error-to-serrtxt)
       - [3.2.2.2. Send standard output and standard error streams to the same file sone.txt](#3222-send-standard-output-and-standard-error-streams-to-the-same-file-sonetxt)
       - [3.2.2.3. Ignore both standard input and output](#3223-ignore-both-standard-input-and-output)
   - [3.3. Pipe](#33-pipe)
   - [3.4. xargs](#34-xargs)
   - [3.5. tee](#35-tee)
-- [4. Filename expansion](#4-filename-expansion)
-- [5. Job control](#5-job-control)
+- [4. Dosya Adı Genişletme](#4-filename-expansion)
+- [5. İş Kontrolü](#5-job-control)
 - [6. Process handling](#6-process-handling)
   - [6.1. difference between ```ps``` and ```jobs```](#61-difference-between-ps-and-jobs)
 - [7. Quoting](#7-quoting)
@@ -151,7 +151,7 @@ stdout| Komutlardan çıktıyı görüntüler.  | 1
 stderr| Komutlardan hatayı görüntüler   | 2
 stdin | Komutlara giriş sağlar    | 0
  
-## 3.2. Yönlendirmeler
+## 3.2. Yeniden Yönlendirmeler
 
 ### 3.2.1. Biçimler
 Giriş ve çıkış yeniden yönlendirmeleri büyüktür ve küçüktür işareti kullanılarak yapılır (<>)
