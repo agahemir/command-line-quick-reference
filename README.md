@@ -213,7 +213,7 @@ Pipe, bir komutun standart çıktısını başka bir komutun girişine yeniden y
   ```ls | xargs -I{} mv {} {}.bkp```
 
 ## 3.5. tee
-- komut standart girişten okur ve standart bir çıktıya ve bir veya daha fazla dosyaya yazar
+- Komut standart girişten okur ve standart bir çıktıya ve bir veya daha fazla dosyaya yazar
 - Bu, hem ekranda bir komutun çıktısını görmek istediğimizde hem de çıktıyı daha sonra analiz için bir dosyaya kaydetmek istediğimizde yararlıdır.
 
 Örnek:
@@ -223,7 +223,7 @@ Pipe, bir komutun standart çıktısını başka bir komutun girişine yeniden y
 - Joker karakter, dosya adı veya klasör adında bir veya daha fazla karakteri temsil etmek için kullanılan bir karakterdir.
 - Dosya küreleme, bu joker karakterleri tanıyan ve genişletmeyi yapan işlemdir. 
 
-joker karakter | açıklama                                                        | örnek      | eşleşenler                           | eşleşmeyenler
+Joker karakter | Açıklama                                                        | örnek      | eşleşenler                           | eşleşmeyenler
 ---      | ---                                                                | ---          | ---                               | ---
 \*       | 0 ve daha fazla karakter ile eşleşir.                                      | ls to*       | to, tom, ton, tow, tommy, tommie  | tata, tea
 ?        | 1 karakter ile eşleşir.                                                | ls to?       | tom, tow, ton                     | to, tommy, tommie, tata, tea
@@ -238,7 +238,7 @@ joker karakter | açıklama                                                     
 - Çalışan her programa iş denir (Buradaki "iş" bir kabuğun bir süreç grubunu temsil eder).
 - Her işe benzersiz bir kimlik atanır.
 
-komut        | açıklama
+Komut        | Açıklama
 ---            | ---
 ```jobs```     | Geçerli kabuğun çalışan ve askıya alınan tüm işlerini listeler.
 ```fg```       | İşi ön plana çıkarır.
@@ -289,8 +289,8 @@ Tek tırnak ile      | ```echo '$HOME'``` | $HOME
 ## 8.1. Dizin Listeleme ```ls```
 Komut                     | Açıklama
 ---                         | ---
-```ls```                    | list the contents of current directory Geçerli dizinin içindekileri listeler.
-```ls *```                  | list contents of the directory along with the subdirectory Geçerli dizinin içindekileri alt-dizinler ile birlikte listeler.
+```ls```                    | Geçerli dizinin içindekileri listeler.
+```ls *```                  | Geçerli dizinin içindekileri alt-dizinler ile birlikte listeler.
 ```ls -l```                 | Geçerli dizinin içindekileri dosya sahibi, izinler, tarih ve boyutu ile listeler.
 ```ls -a```                 | Gizli dosyaları listeler.
 ```ls -t```                 | Dosyaları son değiştirilme tarihine göre azalan sırada listeler.
@@ -302,123 +302,123 @@ Komut                     | Açıklama
 ## 8.2. Dosya İçeriğini Gösterme
 Komut                           | Açıklama
 ---                               | ---
-```cat demo.txt```                | show the contents of file. use for relatively small files
-```head demo.txt```               | show the first part of the file
-```tail demo.txt```               | show the last part of the file
-```tail -f demo.txt```            | show the text appended to the file as the file grows
-```less demo.txt```               | show contents of file one screen at a time
-```less -p "regular" demo.txt```  | show contents of the file from the first line with which the pattern matches
-```strings -a binaryfile```       | print the sequence of all the printable characters in the file
-```diff file1 file2```            | shows difference between 2 files
+```cat demo.txt```                | Dosyanın içindekilerini çıktı verir. Nispeten küçük dosyalarda kullanılır.
+```head demo.txt```               | Show the first part of the file Dosyanın ilk bölümünü gösterir.
+```tail demo.txt```               | Show the last part of the file Dosyanın son bölümünü gösterir.
+```tail -f demo.txt```            | Dosya büyüdükçe dosyaya eklenen metni gösterir.
+```less demo.txt```               | Dosyanın içeriğini bir ekranda bir seferde gösterir.
+```less -p "regular" demo.txt```  | Dizgenin eşleştiği ilk satırdaki dosyanın içeriğini gösterir.
+```strings -a binaryfile```       | Dosyadaki tüm yazdırılabilir karakterlerin sırasını yazdırır.
+```diff file1 file2```            | İki dosya arasındaki farkları gösterir.
 
-## 8.3. file handling
+## 8.3. Dosya Yönetimi
 
-### 8.3.1. copy
+### 8.3.1. Kopyalama
+Komut                           | Açıklama
+---                               | ---
+```cp dosya1 dosya2```              | dosya1'den dosya2'ye kopyalama
+```cp dosya1 dosya2 dizin1```   | dosya1 ve dosya2'yi dizin1'e kopyalama
+```cp -R dizin1 dizin2``` | dizin1'deki içerikleri dizin2'ye kopyalama
+```cp *.txt dizin1```         | Sonu .txt olan bütün dosyaları dizin1'e kopyalama
+
+### 8.3.2. Taşıma ve Yeniden Adlandırma
+Komut                           | Açıklama
+---                               | ---
+```mv dosya1 dosya2```              | dosya1'i dosya2 olarak yeniden adlandırma
+```mv dosya1 dizin1/```        | dosya1'i dizin1'e taşıma
+```mv *.jpg dizin1/```        | Sonu .jpg olan bütün dosyaları dizin1'e taşıma
+
+### 8.3.3. Silme
 command                           | description
 ---                               | ---
-```cp file1 file2```              | copy file1 to file2
-```cp file1 file2 directory1```   | copy file1 and file2 to directory1
-```cp -R directory1 directory2``` | copy contents of directory1 to directory2
-```cp *.txt directory1```         | copy all files ending with .txt to directory1
+```rm dosya1```                    | dosya1'i siler.
+```rm file1 file2```              | dosya1 ve dosya2'yi siler.
+```rm *.png```                    | Sonu .png olan bütün dosyaları siler.
+```rm -d emptyDirectory```        | Remove an empty directory Boş bir dizini siler.
+```rm -r directory1```            | Tüm dosyaları, alt dizinleri ve dizin1 dizinini silme.
 
-### 8.3.2. move or rename
-command                           | description
+### 8.3.4. Dosya Bağlantısı
+- Sembolik bağlantı, başka bir dosyaya veya dizine işaret eden bir dosyadır.
+- Dosya bağlantılarının 2 adet biçimi bulunur.
+  - **Sabit Bağlantı** -> Mevcut dosya için ek bir addır. Her dosya benzersiz bir numara ile ilişkilendirilir. Bu benzersiz numaraya inode denir. Sabit Bağlantı, 2 veya daha fazla dosya adını aynı inode ve sırayla aynı dosyayla ilişkilendirir. Orijinal dosya kaldırılırsa, içeriğe sabit bağlantı yoluyla erişilebilir.
+  - **Yumuşak Bağlantı** -> Bir dosya veya dizine dolaylı bir işaretçidir. İçeriğine değil, yalnızca orijinal dosyanın yoluna sahiptir.
+
+Komut                           | Açıklama
 ---                               | ---
-```mv file1 file2```              | rename file1 to file2
-```mv file1 directory1/```        | move file1 to directory1
-```mv *.jpg directory1/```        | move all files ending with .jpg to directory1
+```ln dosya1 bağlantu1```              | dosya1'e sabit bağlantı oluşturun (bağlantı1) ile.
+```ln -s dosya1 bağlantı1```           | dosya1'e yumuşak bağlantı oluşturun (bağlantı1) ile.
 
-### 8.3.3. delete
-command                           | description
----                               | ---
-```rm file1```                    | remove file1
-```rm file1 file2```              | remove file1 and file2
-```rm *.png```                    | remove all files ending with .png
-```rm -d emptyDirectory```        | remove an empty directory
-```rm -r directory1```            | recursively remove all files, subdirectories and directory of directory1
-
-### 8.3.4. file linking
-- a symbolic link is a file that points to another file or directory
-- there are 2 types of links
-  - **Hard link** -> it is an additional name for the existing file. Each file is associated with an unique number. This unique number is called inode. Hardlink associate 2 or more filenames to the same inode and in turn the same file. If the original file is removed, the contents are still available via the hardlink
-  - **Soft link** -> it is an indirect pointer to a file or directory. It has only the path of the original file and not its contents
+### 8.3.5. Dizin Değiştir (CD)
 
 command                           | description
 ---                               | ---
-```ln file1 link1```              | create a hardlink link1 to file file1
-```ln -s file1 link1```           | create a softlink link1 to file file1
-
-### 8.3.5. change directory
-
-command                           | description
----                               | ---
-```cd```                          | Change to home directory
-```cd ~```                        | Change to home directory
-```cd -```                        | Change to the previous directory
-```cd ..```                       | Change to the parent directory
-```cd \```                        | Change to the root directory
-```cd ~/dir1/dir2```              | Change to directory relative to home directory
+```cd```                          | Ev dizinine değiştirir. (Uçbirimde şuan olduğunuz dizini)
+```cd ~```                        | Ev dizinine değiştirir. (Uçbirimde şuan olduğunuz dizini)
+```cd -```                        | Önceki dizine döner. (Uçbirimde şuan olduğunuz dizini)
+```cd ..```                       | Üst dizine değiştirir. (Uçbirimde şuan olduğunuz dizini)
+```cd \```                        | Kök dizini değiştirir. (Uçbirimde şuan olduğunuz dizini)
+```cd ~/dir1/dir2```              | Ana dizine göre dizine geçer.
 
 
 # 9. ```grep```
-- searches for pattern in files and prints each line that matches the input pattern
-```grep -<options> <pattern> <filenames>```
-- grep can be used to search in a single file or in multiple files
+- Dosyalarda kalıp arar ve giriş kalıbıyla eşleşen her satırı çıktı verir.
+Kullanımı: ```grep -<options> <pattern> <filenames>``` bu şekildedir.
+- Grep, tek bir dosyada veya birden çok dosyada arama yapmak için kullanılabilir.
 
-## 9.1. Useful ```grep``` options
+## 9.1. Kullanışlı ```grep``` seçenekleri
 
 option  | description
 ---     | ---
--i      | ignore case
--n      | display line numbers along with lines
--v      | display lines that do not match the pattern
--c      | count the number of matching lines
--l      | diplay the filename of the file which has the matching pattern
--o      | print only the matched string. The whole line with the matched string is not printed
--A\<n>  | include n lines after match 
--B\<n>  | include n lines before match
--C\<n>  | include n lines before and after the match
+-i      | Durumu göz ardı eder.
+-n      | Satır numaralarını satırlarla birlikte gösterir.
+-v      | Desen(istenen kalıba)'e uymayan satırları gösterir.
+-c      | Eşleşen satırların sayısını gösterir.
+-l      | Eşleşen desene sahip dosyanın dosya adını gösterir.
+-o      | Yanlızca eşleşen dizeyi yazdırır, yani eşleşen dizeye sahip bütün satırlar yazdırılmaz.
+-A\<n>  | Eşleşmeden sonrasına n satırını dahil et.
+-B\<n>  | Eşleşmeden öncesine n satırını dahil et.
+-C\<n>  | Eşleşmeden sonrasına ve öncesine n satırını dahil et.
 
-### 9.1.1. Examples
-- lets say a demo file(demo.txt) has following content
+### 9.1.1. Örnekler
+- diyelim ki bir demo dosyası(demo.txt) aşağıdaki içeriğe sahip
 
-> THIS IS UPPER CASE LINE<br>
-> this is lower case line<br>
-> This is regular line<br>
-> This line is also regular<br>
-> Line number four<br>
-> Line #5<br>
-> last line
+> BU BÜYÜK HARFLİ<br>
+> bu küçük harfli<br>
+> Bu normal çizgili<br>
+> Bu satır da normal<br>
+> Satır sayısı 4<br>
+> Satır #5<br>
+> son satır
 
-- Search for a string in a file<br>
-  ```grep "this" demo.txt```
+- Bir dosyada bir dize arar.<br>
+  ```grep "bu" demo.txt```
 
-- Search for a string in a file, without matching case<br>
-  ```grep -i "this" demo.txt```
+- Dosyada büyük/küçük harf eşleşmesi olmadan bir dize arar.<br>
+  ```grep -i "bu" demo.txt```
 
-- Search for a string in a file and get both the line number and output<br>
-  ```grep -n "this" demo.txt```
+- Bir dosyada bir dize arayın ve hem satır numarasını hem de çıktıyı alır.<br>
+  ```grep -n "bu" demo.txt```
 
-- Get the number of lines matching the searched string<br>
-  ```grep -c "this" demo.txt```
+- Aranan dizeyle eşleşen satır sayısını alır.<br>
+  ```grep -c "bu" demo.txt```
 
-- Get the filename in which the searched string is found<br>
-  ```grep -l "this" demo.txt```
+- Aranan dizenin bulunduğu dosya adını alır.<br>
+  ```grep -l "bu" demo.txt```
 
-- Get 2 lines after the matching line<br>
-  ```grep -A2 "This" demo.txt```
+- Eşleşen satırdan sonra 2 satır alır.<br>
+  ```grep -A2 "Bu" demo.txt```
 
-- Get 2 line before the matching line<br>
-  ```grep -B2 "This" demo.txt```
+- Eşleşen satırdan önce 2 satır alır.<br>
+  ```grep -B2 "Bu" demo.txt```
 
-- Get 2 lines before and after the matching line<br>
-  ```grep -C2 "This" demo.txt```
+- Eşleşen satırdan önce ve sonra 2 satır alır.<br>
+  ```grep -C2 "Bu" demo.txt```
  
-## 9.2. Regular expression in grep
-- a regular expression is a sequence of characters that specifies the search pattern in text.
-- different characters have special meaning in regular expressions
+## 9.2. Grep'te Düzenli İfadeler (Regex)
+- Düzenli ifadeler, metindeki arama düzenini belirten karakter dizileridir.
+- Düzenli ifadelerde, farklı karakterlerin farklı anlamları vardır.
 
-character | description
+Karakter | Açıklama
 ---       | ---
 [abc]     | matches any one of the characters in the square brackets
 [a-d]     | matches any one of the characters in the range specified in the square brackets
