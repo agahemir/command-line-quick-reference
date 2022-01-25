@@ -110,7 +110,7 @@ komut     | açıklama
 ## 2.2. Kısayollar
 
 ### 2.2.1. Gezinti
-klavye kısayolu | açıklama
+Klavye Kısayolu | Açıklama
 ---               |---
 Ctrl+A | İmleci satırın başlangıcına taşır.
 Ctrl+E | İmleci satırın sonuna taşır.
@@ -121,7 +121,7 @@ Ctrl+B | İmleci bir arayla geriye taşır.
 Ctrl+XX | İmlecin konumunu geçerli konumla önceki konum arasında değiştirir.
  
 ### 2.2.2. Düzenleme
-klavye kısayolu | açıklama
+Klavye Kısayolu | açıklama
 ---              |---
 Ctrl+U | İmlecin sol tarafında kalan tüm karakterleri keser.
 Ctrl+K | İmlecin sağ tarafında kalan tüm karakterleri keser.
@@ -465,7 +465,7 @@ end$      | Yalnızca desen satırın sonundaysa desenle eşleşir.
 - find files with permission as 777 and change permissions to 644<br> ```find . -type f -perm 0777 -print -exec chmod 644 {} \;```
 - find and remove files<br>```find . -type f -name "*.bkp" -exec rm -f {};```
 
-# 11. ```sed``` filter and transform text
+# 11. ```sed``` filter and transfobrm text
 ## 11.1. Overview
 - looks for pattern and edits them
 - works on both files and stdin
