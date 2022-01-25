@@ -240,49 +240,49 @@ joker karakter | açıklama                                                     
 
 komut        | açıklama
 ---            | ---
-```jobs```     | list all the jobs that the current shell is running or has suspended
-```fg```       | bring job to foreground
-```bg```       | send job to background
-```kill```     | terminate job
-```stop```     | suspend job
-Ctrl+c         | terminate job
-Ctrl+z         | suspend job
+```jobs```     | Geçerli kabuğun çalışan ve askıya alınan tüm işlerini listeler.
+```fg```       | İşi ön plana çıkarır.
+```bg```       | İşi arkaplana çıkarır.
+```kill```     | İşi sonlandırır.
+```stop```     | İşi durdurur.
+Ctrl+c         | İşi sonlandırır.
+Ctrl+z         | İşi askıya alır.
 
-Examples:
-- bring the job to the foreground<br>```fg %2 # where 2 is the job number```
-- suspend a job<br>```stop %2 # where 2 is the job number```
-- resume a job in the background<br>```bg %2 # where 2 is the job number```
-- terminate a job<br>```kill %2 # where 2 is the job number```
+Örnekler:
+- İşi önplana çıkarmak için:<br>```fg %2 # burada 2 iş numarasıdır```
+- Bir işi askıya almak için:<br>```stop %2 # burada 2 iş numarasıdır```
+- Bir işi arka planda sürdürmek için.<br>```bg %2 # burada 2 iş numarasıdır```
+- Bir işi sonlandırmak için:<br>```kill %2 # burada 2 iş numarasıdır```
 
-# 6. Process handling
+# 6. Süreç Yönetimi
 
-- Get a snapshot of processes running with ```ps``` command
-- Get the process id of a command by ```ps -ef | grep command```
-- wait for a process to finish by using ```bash wait <process id>```
-- kill a process by using ``` kill <process id>```
-- wait for completion of all child processes<br>```wait```
-- wait for completion of specific process<br>```wait 1234 # where 1234 is the process id```
-
-
-## 6.1. difference between ```ps``` and ```jobs```
-- ```jobs``` tells the list of jobs the current shell is managing
-- ```ps``` tells the list of all the processes running in the system
+- Birlikte çalışan işlemlerin anlık görüntüsünü almak için ```ps``` komutu kullanılır.
+- Bir komutun işlem kimliğini almak için: ```ps -ef | grep command```
+- Bir işlemin bitmesini beklemek için: ```bash wait <process id>```
+- Bir işlemi öldürmek için:``` kill <process id>```
+- Tüm alt işlemlerin tamamlanmasını beklemek için:<br>```wait```
+- Belirli bir işlemin tamamlanmasını beklemek için:<br>```wait 1234 # burada 1234 işlem kimliğidir```
 
 
-# 7. Quoting
-- Quoting is used to remove special meanings from characters or words
-- single quotes - when the single quotes are used, every character within the quotes is preserved and is not evaluated
-- double quotes - when the double qoutes are used, the dollar sign, back quotes and blackslashes are evaluated and interpreted.
-- escape character - \ is used to preserve the literal value of the following character.
+## 6.1. ```ps``` ve ```jobs``` Arasındaki Farklar
+- ```jobs``` Geçerli kabuğun yönettiği işlerin listesini bildirir.
+- ```ps``` Sistemde çalışan bütün işlemlerin listesini bildirir.
+
+
+# 7. Alıntılar
+- Alıntı, karakterlerden veya kelimelerden özel anlamları çıkarmak için kullanılır.
+- Tek tırnaklar kullanıldığında(''), tırnak içindeki her karakter korunur ve değerlendirilmez.
+- Çift tırnak kullanıldığında ("") dolar işareti, ters tırnak ve ters taksim işareti değerlendirilir ve yorumlanır.
+- \ (ters taksim) karakterin gerçek değerini korumak için kullanılır.
  
 
-Examples: 
-examples          | command            | result
+Örnekler: 
+Örnek          | Komut            | Çıktı
 ---               | ---                | ---
-no quote          | ```echo $HOME```   | /home/user1/
-escape character  | ```echo \$HOME```  | $HOME
-single quote      | ```echo '$HOME'``` | $HOME
-double quote      | ```echo "$HOME"``` | /home/user1/
+Alıntı olmadan          | ```echo $HOME```   | /home/user1/
+Kaçış dizisi ile  | ```echo \$HOME```  | $HOME
+Tek tırnak ile      | ```echo '$HOME'``` | $HOME
+Çift tırnak ile      | ```echo "$HOME"``` | /home/user1/
 
 # 8. Basic file management
 
