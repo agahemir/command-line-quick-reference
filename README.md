@@ -270,10 +270,10 @@ Ctrl+z         | İşi askıya alır.
 
 
 # 7. Alıntılar
-- Alıntı, karakterlerden veya kelimelerden özel anlamları çıkarmak için kullanılır.
-- Tek tırnaklar kullanıldığında(''), tırnak içindeki her karakter korunur ve değerlendirilmez.
-- Çift tırnak kullanıldığında ("") dolar işareti, ters tırnak ve ters taksim işareti değerlendirilir ve yorumlanır.
-- \ (ters taksim) karakterin gerçek değerini korumak için kullanılır.
+- Alıntılar, karakterlerden veya kelimelerden özel anlamları çıkarmak için kullanılır.
+- Tek tırnak işareti kullanıldığında(''), tırnak içindeki her karakter korunur ve değerlendirilmez.
+- Çift tırnak işareti kullanıldığında ("") dolar işareti, ters tırnak ve ters taksim işareti değerlendirilir ve yorumlanır.
+- \ (ters taksim) ise karakterin gerçek değerini korumak için kullanılır.
  
 
 Örnekler: 
@@ -284,23 +284,23 @@ Kaçış dizisi ile  | ```echo \$HOME```  | $HOME
 Tek tırnak ile      | ```echo '$HOME'``` | $HOME
 Çift tırnak ile      | ```echo "$HOME"``` | /home/user1/
 
-# 8. Basic file management
+# 8. Temel Dosya Yönetimi
 
-## 8.1. list directory ```ls```
-command                     | description
+## 8.1. Dizin Listeleme ```ls```
+Komut                     | Açıklama
 ---                         | ---
-```ls```                    | list the contents of current directory
-```ls *```                  | list contents of the directory along with the subdirectory
-```ls -l```                 | list the contents of a directory along with the owner, permission, date, size
-```ls -a```                 | list hidden file
-```ls -t```                 | list files in descending order of last modified date
-```ls -rt```                | list files in ascending order of last modified date
-```ls -R```                 | list files of the current directory and the subdirectory recursively to the last subdirectory
-```ls /path/to/dirextory``` | list files in the directory mentioned
+```ls```                    | list the contents of current directory Geçerli dizinin içindekileri listeler.
+```ls *```                  | list contents of the directory along with the subdirectory Geçerli dizinin içindekileri alt-dizinler ile birlikte listeler.
+```ls -l```                 | Geçerli dizinin içindekileri dosya sahibi, izinler, tarih ve boyutu ile listeler.
+```ls -a```                 | Gizli dosyaları listeler.
+```ls -t```                 | Dosyaları son değiştirilme tarihine göre azalan sırada listeler.
+```ls -rt```                | Dosyaları son değiştirilme tarihine göre artan sırada listeler.
+```ls -R```                 | Geçerli dizinin ve alt dizinin dosyalarını son alt dizine özyinelemeli olarak listeler.
+```ls /path/to/dirextory``` | Belirtilen dizindeki dosyaları listeler.
 
 
-## 8.2. show file contents
-command                           | description
+## 8.2. Dosya İçeriğini Gösterme
+Komut                           | Açıklama
 ---                               | ---
 ```cat demo.txt```                | show the contents of file. use for relatively small files
 ```head demo.txt```               | show the first part of the file
