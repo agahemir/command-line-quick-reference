@@ -1,8 +1,5 @@
 - [1. Introduction](#1-introduction)
   - [1.1. Scope](#11-scope)
-  - [1.2. Background](#12-background)
-  - [1.3. Purpose](#13-purpose)
-  - [1.4. Next steps](#14-next-steps)
 - [2. Basics](#2-basics)
   - [2.1. Common commands](#21-common-commands)
   - [2.2. Shortcuts](#22-shortcuts)
@@ -85,75 +82,56 @@
 - [26. Change History](#26-change-history)
 
 
-# 1. Introduction
-## 1.1. Scope
-- This document will mainly focus on things that are usually done in the command line
-- The focus is on tools and techniques for one shot adhoc tasks. 
-- Most of the things in the document can be applied to shell scripting. However, shell scripting is not the focus of this document
-- This document is for Linux/Unix 
+# 1. Giriş
+## 1.1. İzlenim
+- Bu belge, genellikle komut satırında yapılan şeylere odaklanacaktır.
+- Odak noktası, tek seferlik geçici görevler için araçlar ve tekniklerdir. 
+- Belgedeki çoğu şey kabuk komut dosyasına uygulanabilir. Ancak, bu belgede tamamen odaklanılan şey kabuk programlama değildir.
+- Bu belge Linux/UNIX içindir.
+- Bu belge benim tarafımdan "Türkçe" diline uyarlanmıştır. Çeviriler %100 doğru değildir, eklediğim ve çıkardığım kısımlar mevcut.
+# 2. Temeller
+## 2.1. Sık Kullanılan Komutlar
 
-## 1.2. Background
-- I am documenting things I learnt and am still learning
-- I had multiple files with random snippets.
-- I decided to organize the mess into a single piece, so that I can efficiently look up things
-- I cannot claim to be an expert in command line. 
-
-## 1.3. Purpose
-- The document will not help anyone become an expert. 
-- However, it may help people become effective.
-- I have kept the document concise. I skipped over details that I never used much and can be looked up later in the internet.
-- I have focused on concrete examples of common or interesting use cases.
-
-## 1.4. Next steps
-- rephrase unclear material
-- correct incorrect material
-- add missing material
-- add further reading material
-- Contributions are welcome
-
-# 2. Basics
-## 2.1. Common commands
-
-command     | description
+komut     | açıklama
 --          | --
-```man```   | get help on commands. e.g.<br>```man date```
-```date```  | gives the date and time
-```cal```   | shows the calender
-```ls```    | tells which files are present in the current working         directory<br>when a *-l* option is used, the command returns owner, size, date of file, persissions, etc.
-```cat```   | shows contents of a file
-```cp```    | copy a file
-```mv```    | move a file
-```diff```  | lists differences between 2 files
-```rm```    | removes file 
-```grep```  | find occurences of strings in one or more files
-```pwd```   | print the present working directory's name
-```cd```    | changes the current directory 
+```man```   | komutlar hakkında bilgi verir. örneğin: <br>```man date```
+```date```  | tarih ve zamanı verir
+```cal```   | takvimi verir
+```ls```    | geçerli çalışma dizininde hangi dosyaların bulunduğunu söyler <br>*-l* seçeneği ile kullanıldığında, komut, sahibini, boyutunu, dosyanın tarihini, izinlerini, vb. döndürecektir.
+```cat```   | dosyanın içindekilerini gösterir
+```cp```    | dosyayı kopyalar
+```mv```    | dosyayı taşır
+```diff```  | iki dosyanın farklılıklarını gösterir
+```rm```    | dosyayı siler
+```grep```  | bir veya daha fazla dosyadaki dizelerin içindekileri bulun
+```pwd```   | mevcut çalışma dizininin adını yazdırır
+```cd```    | mevcut dizini değiştirir
 
-## 2.2. Shortcuts
+## 2.2. Kısayollar
 
-### 2.2.1. Navigation
-keyboard shortcut | description
+### 2.2.1. Gezinti
+klavye kısayolu | açıklama
 ---               |---
-Ctrl+A            | move the cursor to the start of the line
-Ctrl+E            | move the cursor to the end of the line
-Alt+F             | move the cursor forward by one word
-Ctrl+F            | move the cursor forward by one character
-Alt+B             | move the cursor backward by one word
-Ctrl+B            | move the cursor backward by one charater
-Ctrl+XX           | toggle the cursor's position between the current position and the previous position
+Ctrl+A | imleci satırın başlangıcına taşır
+Ctrl+E | imleci satırın sonuna taşır
+Alt+F | imleci tek sözcük ileriye taşır
+Ctrl+F | imleci bir karakter ileriye taşır
+Alt+B | imleci tek sözcükle geriye taşır
+Ctrl+B | imleci bir arayla geriye taşır
+Ctrl+XX | imlecin konumunu geçerli konumla önceki konum arasında değiştirir
  
-### 2.2.2. Editing
-keyboard shortcut | description
----               |---
-Ctrl+U            | cut all the characters to the left of the cursor
-Ctrl+K            | cut all the characters to the right of the cursor
-Ctrl+W            | cut one word to the left of the cursor
-Ctrl+H            | cut one character to the left of the cursor
-Alt+D             | cut one word to the right of the cursor
-Ctrl+D            | cut one character to the right of the cursor
-Ctrl+Y            | paste the cut characters
-Ctrl+_            | undo the last deletion
-Tab               | complete arguments or list all available commands
+### 2.2.2. Düzenleme
+klavye kısayolu | açıklama
+---              |---
+Ctrl+U | imlecin sol tarafında kalan tüm karakterleri keser
+Ctrl+K | imlecin sağ tarafında kalan tüm karakterleri keser
+Ctrl+W | imlecin solundaki bir sözcüğü keser
+Ctrl+H | imlecin solundaki bir karakteri keser
+Alt+D | imlecin sağındaki bir sözcüğü keser
+Ctrl+D | imlecin sağındaki bir karakteri keser
+Ctrl+Y | kesilen karakterleri yapıştırır
+Ctrl+_ | son silmeyi geri alır
+Sekme | komut dzgelerini tamamlar ya da kullanılabilir tüm komutları listeler
 
 ### 2.2.3. Recall from history
 keyboard shortcut | description
