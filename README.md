@@ -1,11 +1,11 @@
-- [1. Introduction](#1-introduction)
-  - [1.1. Scope](#11-scope)
-- [2. Basics](#2-basics)
-  - [2.1. Common commands](#21-common-commands)
-  - [2.2. Shortcuts](#22-shortcuts)
-    - [2.2.1. Navigation](#221-navigation)
-    - [2.2.2. Editing](#222-editing)
-    - [2.2.3. Recall from history](#223-recall-from-history)
+- [1. Giriş](#1-giriş)
+  - [1.1. İzlenim](#11-izlenim)
+- [2. Temeller](#2-temeller)
+  - [2.1. Yaygın Kullanılan Komutlar](#21-yaygın-kullanılan-komutlar)
+  - [2.2. Kısayollar](#22-shortcuts)
+    - [2.2.1. Gezinti](#221-navigation)
+    - [2.2.2. Düzenleme](#222-editing)
+    - [2.2.3. Geçmişten Geri Çağırma](#223-recall-from-history)
 - [3. Streams, Pipes and Redirects](#3-streams-pipes-and-redirects)
   - [3.1. Streams](#31-streams)
   - [3.2. Redirections](#32-redirections)
@@ -90,108 +90,108 @@
 - Bu belge Linux/UNIX içindir.
 - Bu belge benim tarafımdan "Türkçe" diline uyarlanmıştır. Çeviriler %100 doğru değildir, eklediğim ve çıkardığım kısımlar mevcut.
 # 2. Temeller
-## 2.1. Sık Kullanılan Komutlar
+## 2.1. Yaygın Kullanılan Komutlar
 
 komut     | açıklama
 --          | --
-```man```   | komutlar hakkında bilgi verir. örneğin: <br>```man date```
-```date```  | tarih ve zamanı verir
-```cal```   | takvimi verir
-```ls```    | geçerli çalışma dizininde hangi dosyaların bulunduğunu söyler <br>*-l* seçeneği ile kullanıldığında, komut, sahibini, boyutunu, dosyanın tarihini, izinlerini, vb. döndürecektir.
-```cat```   | dosyanın içindekilerini gösterir
-```cp```    | dosyayı kopyalar
-```mv```    | dosyayı taşır
-```diff```  | iki dosyanın farklılıklarını gösterir
-```rm```    | dosyayı siler
-```grep```  | bir veya daha fazla dosyadaki dizelerin içindekileri bulun
-```pwd```   | mevcut çalışma dizininin adını yazdırır
-```cd```    | mevcut dizini değiştirir
+```man```   | Komutlar hakkında bilgi verir. örneğin: <br>```man date```
+```date```  | Tarih ve zamanı çıktı verir.
+```cal```   | Takvimi çıktı verir.
+```ls```    | Bulunduğunuz dizinde hangi dosyaların bulunduğunu söyler <br>*-l* seçeneği ile kullanıldığında, komut, sahibini, boyutunu, dosyanın tarihini, izinlerini, vb. döndürecektir.
+```cat```   | Dosyanın içindekilerini gösterir.
+```cp```    | Dosya kopyalar.
+```mv```    | Dosya taşır.
+```diff```  | İki dosyanın farklılıklarını gösterir.
+```rm```    | Dosya siler.
+```grep```  | Bir veya daha fazla dosyadaki dizelerin içindekileri bulur.
+```pwd```   | Mevcut çalışma dizininin adını yazdırır.
+```cd```    | Mevcut dizini değiştirir.
 
 ## 2.2. Kısayollar
 
 ### 2.2.1. Gezinti
 klavye kısayolu | açıklama
 ---               |---
-Ctrl+A | imleci satırın başlangıcına taşır
-Ctrl+E | imleci satırın sonuna taşır
-Alt+F | imleci tek sözcük ileriye taşır
-Ctrl+F | imleci bir karakter ileriye taşır
-Alt+B | imleci tek sözcükle geriye taşır
-Ctrl+B | imleci bir arayla geriye taşır
-Ctrl+XX | imlecin konumunu geçerli konumla önceki konum arasında değiştirir
+Ctrl+A | İmleci satırın başlangıcına taşır.
+Ctrl+E | İmleci satırın sonuna taşır.
+Alt+F | İmleci tek sözcük ileriye taşır.
+Ctrl+F | İmleci bir karakter ileriye taşır.
+Alt+B | İmleci tek sözcükle geriye taşır.
+Ctrl+B | İmleci bir arayla geriye taşır.
+Ctrl+XX | İmlecin konumunu geçerli konumla önceki konum arasında değiştirir.
  
 ### 2.2.2. Düzenleme
 klavye kısayolu | açıklama
 ---              |---
-Ctrl+U | imlecin sol tarafında kalan tüm karakterleri keser
-Ctrl+K | imlecin sağ tarafında kalan tüm karakterleri keser
-Ctrl+W | imlecin solundaki bir sözcüğü keser
-Ctrl+H | imlecin solundaki bir karakteri keser
-Alt+D | imlecin sağındaki bir sözcüğü keser
-Ctrl+D | imlecin sağındaki bir karakteri keser
-Ctrl+Y | kesilen karakterleri yapıştırır
-Ctrl+_ | son silmeyi geri alır
-Sekme | komut dzgelerini tamamlar ya da kullanılabilir tüm komutları listeler
+Ctrl+U | İmlecin sol tarafında kalan tüm karakterleri keser.
+Ctrl+K | İmlecin sağ tarafında kalan tüm karakterleri keser.
+Ctrl+W | İmlecin solundaki bir sözcüğü keser.
+Ctrl+H | İmlecin solundaki bir karakteri keser.
+Alt+D | İmlecin sağındaki bir sözcüğü keser.
+Ctrl+D | İmlecin sağındaki bir karakteri keser.
+Ctrl+Y | Kesilen karakterleri yapıştırır.
+Ctrl+_ | Son silmeyi geri alır.
+Tab | Komut dizgelerini tamamlar ya da kullanılabilir tüm komutları listeler.
 
-### 2.2.3. Recall from history
-keyboard shortcut | description
+### 2.2.3. Geçmişten Geri Çağırma
+Klavye Kısayolu | Açıklama
 ---               |---
-Crtl+R            | search the command history
-Ctrl+G            | abort
-Ctrl+P/UP         | the previous command in the history
-Ctrl+N/DOWN       | the next command in the history
+Crtl+R            | Komut geçmişini arar.
+Ctrl+G            | Komut geçmişi seçkesini iptal eder.
+Ctrl+P/YUKARI         | Geçmişte kullandığınız bir önceki komutu gösterir.
+Ctrl+N/AŞAĞI       | Geçmişte kullandığınız bir ileriki komutu gösterir.
 
-# 3. Streams, Pipes and Redirects
-## 3.1. Streams
-A linux shell's inputs and outputs are sequence of characters called streams. There are three standard I/O streams:
+# 3. Stream'lar, Pipe'lar ve Yönlendirmeler
+## 3.1. Stream'lar
+Linux kabuğunun giriş ve çıkışları "Stream" adı verilen karakter dizileridir. Üç adet standart I/O (giriş-çıkış) akışı bulunur:
 
-name  | description                    |file descriptor
+Adı  | Açıklama                   |Dosya Tanımlayıcısı
 ---   |---                             |---
-stdout| displays output from commands  | 1
-stderr| displays error from commands   | 2
-stdin | provides inputs to commands    | 0
+stdout| Komutlardan çıktıyı görüntüler.  | 1
+stderr| Komutlardan hatayı görüntüler   | 2
+stdin | Komutlara giriş sağlar    | 0
  
-## 3.2. Redirections
+## 3.2. Yönlendirmeler
 
-### 3.2.1. Types
-Input and output redirections are done using angular brackets (<>)
+### 3.2.1. Biçimler
+Giriş ve çıkış yeniden yönlendirmeleri büyüktür ve küçüktür işareti kullanılarak yapılır (<>)
 
 Bracket type   | description
 ---            | ---
-\>             | send stream to a file. E.g. <br> ```ls a > o.txt```
-\>>            | append stream to a file. E.g. <br> ```ls b >> o.txt```
-\>&            | write into stream. E.g. <br> ```ls c > o2.txt 2>&1```
-<              | receive stream from a file. E.g. <br> ```wc < o.txt```
-<<             | embed the text that will be fed to a command within the script<br> Example<br> ```cat << EOF > output.txt``` <br> ```line 1```  <br> ```line 2``` <br> ```line 3``` <br> ```EOF``` <br> ```echo done```
+\>             | dosyaya Stream gönderir. Örneğin: <br> ```ls a > o.txt```
+\>>            | dosyaya Stream ekleme. Örneğin: <br> ```ls b >> o.txt```
+\>&            | Stream'ın içine yazar. Örneğin: <br> ```ls c > o2.txt 2>&1```
+<              | Dosyadan Stream alır. Örneğin: <br> ```wc < o.txt```
+<<             | Betik içindeki bir komuta beslenecek metni gömer. <br> Örneğin: <br> ```cat << EOF > output.txt``` <br> ```line 1```  <br> ```line 2``` <br> ```line 3``` <br> ```EOF``` <br> ```echo tamamlandı```
 
-### 3.2.2. Additional Examples
-#### 3.2.2.1. Send standard output to sout.txt and standard error to serr.txt
-```command1 > sout.txt 2> serr.txt```
-#### 3.2.2.2. Send standard output and standard error streams to the same file sone.txt
-```command1 > sone.txt 2>&1```
+### 3.2.2. EK Örnekler
+#### 3.2.2.1. Standart çıktıyı sout.txt'ye gönderir ve standart hatayı serr.txt'ye gönderir.
+```komut1 > sout.txt 2> serr.txt```
+#### 3.2.2.2. Standart çıktı ve standart hata akışlarını aynı "sone.txt dosyasına gönderir.
+```komut1 > sone.txt 2>&1```
 
-OR
+Veya
 
 ```command1 &> sone.txt```
 
-#### 3.2.2.3. Ignore both standard input and output
+#### 3.2.2.3. Hem standart girdiyi hem de çıktıyı görmezden gelir.
 ```command1 &> /dev/null```
 
-***/dev/null** is a null device file. This will discard anything written to it, and will return EOF on reading.*
+***/dev/null** boş bir aygıt dosyasıdır. Bu, kendisine yazılan her şeyi atacak ve okuma sırasında EOF döndürecektir.*
 
 ## 3.3. Pipe
-Piping can redirect the standard output of one command to the input of another command.
+Pipe, bir komutun standart çıktısını başka bir komutun girişine yeniden yönlendirebilir.
 
 ```command1 | command2 paramater1 | command3 parameter1 parameter2 | command4```
 
-Examples:
+Örnekler:
 
-- Print file contents only once. remove duplicate records:<br> ```sort file1 | uniq```
+- Dosya içeriğini yalnızca bir kez yazdırır. Tekrar eden kayıtları kaldırır:<br> ```sort file1 | uniq```
 
-- print 5 most frequently used commands <br>
+- En sık kullanılan 5 komutu yazdırır: <br>
 ```history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn  | head -5```
 
-- print the file types and their frequencies <br> ```ls | rev | cut -f1 -d'.' | rev | sort | uniq -c | sort -n```
+- Dosya türlerini ve sıklığını yazdırır: <br> ```ls | rev | cut -f1 -d'.' | rev | sort | uniq -c | sort -n```
   
 ## 3.4. xargs
 - short for extended arguments
