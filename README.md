@@ -164,7 +164,7 @@ Bracket type   | description
 <              | Dosyadan Stream alır. Örneğin: <br> ```wc < o.txt```
 <<             | Betik içindeki bir komuta beslenecek metni gömer. <br> Örneğin: <br> ```cat << EOF > output.txt``` <br> ```line 1```  <br> ```line 2``` <br> ```line 3``` <br> ```EOF``` <br> ```echo tamamlandı```
 
-### 3.2.2. EK Örnekler
+### 3.2.2. Ek Örnekler
 #### 3.2.2.1. Standart çıktıyı sout.txt'ye gönderir ve standart hatayı serr.txt'ye gönderir.
 ```komut1 > sout.txt 2> serr.txt```
 #### 3.2.2.2. Standart çıktı ve standart hata akışlarını aynı "sone.txt dosyasına gönderir.
@@ -194,51 +194,51 @@ Pipe, bir komutun standart çıktısını başka bir komutun girişine yeniden y
 - Dosya türlerini ve sıklığını yazdırır: <br> ```ls | rev | cut -f1 -d'.' | rev | sort | uniq -c | sort -n```
   
 ## 3.4. xargs
-- short for extended arguments
-- some commands can take arguments from both standard input and as command-line arguments.
--  however, there are some commands that cannot take input from standard input. They accept inputs only from arguments. For these commands we need to use args.
--  xargs converts input from standard input into arguments to a command.
--  divides the arguments to a permitted number and runs the command repeatedly over each greoup of arguments.
--  using -n option, the number of arguments per command can be specified. 
+- Genişletilmiş argümanların kısaltmasıdır.
+- Bazı komutlar hem standart girişten hem de komut satırı bağımsız değişkenleri olarak bağımsız değişkenler alabilir.
+- Ancak, standart girişten giriş alamayan bazı komutlar vardır. Yalnızca bağımsız değişkenlerden gelen girdileri kabul ederler. Bu komutlar için args kullanmamız gerekir.
+- xargs, Standart girişten bağımsız değişkenlere girişi bir komuta dönüştürür.
+- Bağımsız değişkenleri izin verilen bir sayıya böler ve komutu her bağımsız değişken grubu üzerinde art arda çalıştırır.
+- -n seçeneği kullanılarak, komut başına bağımsız değişken sayısı belirtilebilir. 
    ```find . | xargs -n1 basename```
--  in order to assign the std input to a placeholder , use ```-I{}```. the placeholder is usually used when we want to place the std input in the middle of a command<br>
-   ```ls | xargs -I{} echo {} file is found```
+-  Std girişini bir yer tutucuya atamak için, ```-I{}```. Yer tutucu genellikle std girişini bir komutun ortasına yerleştirmek istediğimizde kullanılır.<br>
+   ```ls | xargs -I{} echo {} dosya bulundu```
 
-Examples:
-- print the number lines/words/characters in the files in a directory<br>
+Örnekler:
+- Dizindeki dosyalardaki kod satırlarının sayılarını/sözcükleri/karakterleri yazdırır. <br>
   ```ls | wc```
-- print the file types and their frequencies <br>
+- Dosya türlerini ve frekanslarını yazdırır. <br>
   ```find . -type f | xargs basename -a | grep "\." | rev | cut -f1 -d'.' | rev | sort | uniq -c | sort -n```
-- rename all files in a directory<br>
+- Dizindeki tüm dosyaları yeniden adlandırır. <br>
   ```ls | xargs -I{} mv {} {}.bkp```
 
 ## 3.5. tee
-- the command reads from standard input and writes it to a standard output and to one or more files
-- this is useful when we want to see the output of a command both on the screen and also want to save the output in a file for later analysis.
+- komut standart girişten okur ve standart bir çıktıya ve bir veya daha fazla dosyaya yazar
+- Bu, hem ekranda bir komutun çıktısını görmek istediğimizde hem de çıktıyı daha sonra analiz için bir dosyaya kaydetmek istediğimizde yararlıdır.
 
-Examples:
+Örnek:
 - ```ls | tee fileList.txt```
 
-# 4. Filename expansion
-- a wildcard character is a character that is used to represent one or more characters in a filename or foldername.
-- file globbing is the operation that recognizes these wildcard characters and does the expansion. 
+# 4. Dosya adı genişletme
+- Joker karakter, dosya adı veya klasör adında bir veya daha fazla karakteri temsil etmek için kullanılan bir karakterdir.
+- Dosya küreleme, bu joker karakterleri tanıyan ve genişletmeyi yapan işlemdir. 
 
-wildcard | description                                                        | example      | matches                           | does not match
+joker karakter | açıklama                                                        | örnek      | eşleşenler                           | eşleşmeyenler
 ---      | ---                                                                | ---          | ---                               | ---
-\*       | matches 0 or more characters                                       | ls to*       | to, tom, ton, tow, tommy, tommie  | tata, tea
-?        | matches 1 character                                                | ls to?       | tom, tow, ton                     | to, tommy, tommie, tata, tea
-[abc]    | matches any one of the characters in the brackets                  | ls [bc]at    | bat, cat                          | Bat, Cat, rat
-[a-z]    | matches any one of the characters within the range in the brackets | ls day[1-9]  | day1, day2 upto day9              | day11, day
-[!abc]   | matches any one character that is not in the brackets              | ls [!r]at    | bat, cat, Bat, Cat, Rat           | rat
-[!a-z]   | matches any one character that is not in the range in the brackets | ls day[!1-9] | day0, days                        | day1 upto day9
+\*       | 0 ve daha fazla karakter ile eşleşir.                                      | ls to*       | to, tom, ton, tow, tommy, tommie  | tata, tea
+?        | 1 karakter ile eşleşir.                                                | ls to?       | tom, tow, ton                     | to, tommy, tommie, tata, tea
+[abc]    | Parantez içindeki karakterlerden herhangi biriyle eşleşir.                  | ls [bc]at    | bat, cat                          | Bat, Cat, rat
+[a-z]    | Parantez içindeki aralıktaki karakterlerden herhangi biriyle eşleşir. | ls day[1-9]  | day1, day2 upto day9              | day11, day
+[!abc]   | Parantez içinde olmayan herhangi bir karakterle eşleşir.              | ls [!r]at    | bat, cat, Bat, Cat, Rat           | rat
+[!a-z]   | Parantez içindeki aralıkta olmayan herhangi bir karakterle eşleşir. | ls day[!1-9] | day0, days                        | day1 upto day9
 
 
-# 5. Job control
-- command line provides the ability to stop/suspend the execution of a process and resume a suspended process at a later point in time
-- each running program is called job
-- unique id is assigned to every job 
+# 5. İş Kontrolü
+- Komut satırı, bir işlemin yürütülmesini durdurma/askıya alma ve askıya alınmış bir işlemi daha sonraki bir zamanda devam ettirme yeteneği sağlar.
+- Çalışan her programa iş denir (Buradaki "iş" bir kabuğun bir süreç grubunu temsil eder).
+- Her işe benzersiz bir kimlik atanır.
 
-command        | description
+komut        | açıklama
 ---            | ---
 ```jobs```     | list all the jobs that the current shell is running or has suspended
 ```fg```       | bring job to foreground
