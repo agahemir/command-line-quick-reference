@@ -482,434 +482,429 @@ end$      | Yalnızca desen satırın sonundaysa desenle eşleşir.
 
 Komut | Açıklama
 ---     | ---
-d       | siler
-p       | çıktı verir (yazdır)
-s       | yerine geçirir
-q       | çık
-a       | satırdan sonra bir kalıp ekle
-i       | satırdan önce bir kalıp ekle
-c       | change a line
-y       | transform
+d       | Siler.
+p       | Çıktı verir (yazdırır).
+s       | Yerine geçirir.
+q       | Çık.
+a       | Satırdan sonra bir kalıp ekle.
+i       | Satırdan önce bir kalıp ekle.
+c       | Satırı değiştirir.
+y       | Değiştirir.
 
-## 11.2. Examples
-- remove blank lines<br>``` sed '/^$/d' file.txt```
-- remove all lines with search string<br>```sed '/Search/d' file.txt```
-- remove all instances of search string<br>```sed 's/Search//g' file.txt```
-- print lines with the search string<br>```sed '/Search/ p' file.txt```
-- substitue a string with another<br>```sed 's/oldString/newString/g' file.txt```
-- remove trailing spaces<br>```sed 's/ *$//' file.txt```
-- remove leading spaces<br>```sed `s/^ *//' file.txt```
-- add spaces to start of everyline<br>```sed 's/^/    /' file.txt```
-- print the first 10 line<br>```sed '10 q' file.txt```<br>```sed -n '1,10 p' file.txt```
-- append line after a pattern<br>```sed '/pattern/ a add line here' file.txt```
-- insert line before a pattern<br>```sed '/pattern/ i add line here' file.txt```
-- change a line with a pattern<br>```sed '/pattern/ c line changed here' file.txt```
-- change a->p, b->q, c->r<br>```sed 'y/abc/pqr/' file.txt```
+## 11.2. Örnekler
+- Boş satırları kaldırır: <br>``` sed '/^$/d' file.txt```
+- Arama dizesini içeren bütün satırları kaldırır:<br>```sed '/Search/d' file.txt```
+- Arama dizesinin tüm kopyalarını kaldırır: <br>```sed 's/Search//g' file.txt```
+- Arama dizesi içeren satırları çıktı verir:<br>```sed '/Search/ p' file.txt```
+- Bir dizeyi başka bir dizeyle değiştirir: <br>```sed 's/oldString/newString/g' file.txt```
+- Sondaki boşlukları kaldırır:<br>```sed 's/ *$//' file.txt```
+- Baştaki boşlukları kaldırır: <br>```sed `s/^ *//' file.txt```
+- Her satırın başına boşluk ekler: <br>```sed 's/^/    /' file.txt```
+- İlk 10 satırı yazdırır<br>```sed '10 q' file.txt```<br>```sed -n '1,10 p' file.txt```
+- Bir kalıptan sonra satır ekler<br>```sed '/pattern/ a add line here' file.txt```
+- Bir kalıptan önce satır ekler<br>```sed '/pattern/ i add line here' file.txt```
+- Bir kalıpla bir satırı değiştirir:<br>```sed '/pattern/ c line changed here' file.txt```
+- Değiştir a->p, b->q, c->r<br>```sed 'y/abc/pqr/' file.txt```
   
-## 11.3. Grouping
-- sed allows capturing specific parts of text into groups.
-- these groups can be manipulated
-- group is enclosed within parentheses expression "\(" and "\)" in the search string
-- each group is assigned a number. The first group is assigned \1 and so on.
-- \1 can be both in pattern string and replacement string
+## 11.3. Gruplama
+- Sed metnin belirli bölümlerini gruplara ayırmaya izin verir.
+- Bu gruplar manipüle edilebilir.
+- Grup, arama dizesinde parantez içindeki ("\" ve "\)" ifadesinin içine alınır.
+- Her gruba bir numara atanır. İlk gruba \1 atanır vb.
+- \1 hem kalıp dizesinde hem de değiştirme dizesinde olabilir.
 
-### 11.3.1. Grouping Examples:
-- switch first and second columns<br>```sed 's/\([a-z]*\) \([a-z]*\)/\2 \1/' file.txt```
+### 11.3.1. Gruplama Örnekleri:
+- Birinci ve ikinci sütunları değiştir<br>```sed 's/\([a-z]*\) \([a-z]*\)/\2 \1/' file.txt```
 - print lines which have consecutive duplicate words<br>```sed -n '/\([a-z][a-z]*\) \1/p' file.txt```
 - remove consecutive duplicate words in a line<br>```sed 's/\([a-z][a-z]*\) \1/\1/' file.txt```
 
-## 11.4. Hold Buffer
-- When sed read text, each line is placed into a temporary space.
-- When a new line is read, the old text is replaced by the new line in the temporary space.
-- This temporary space is called pattern space.
-- Hold buffer is like a long term storage. text can be copied to and from pattern space.
 
-command | description
----     | ---
-x       | exchange hold space and pattern space
-h       | copy pattern buffer into hold space
-H       | append pattern buffer into hold space
-g       | copy hold space to pattern space
-G       | append hold buffer into pattern buffer
 
-### 11.4.1. Example
-- print one line after and before the pattern match<br>```sed -n '/999/ !{x;d};/999/ {x;p;x;p;n;p}' file.txt```
-- add space after every line<br>```sed 'G' file.txt```
-- insert blank line above every line which matches pattern<br>```sed '/start/ {x;p;x}' file.txt```
-- Insert blank line after every line which matches pattern<br>```sed '/start/ {G}' file.txt```
-- Insert blank line before and after every line which matches pattern<br>```sed '/start/ {x;p;x;G}' file.txt```
+## 11.4. Tampon tutun
+- sed metni okuduğunda, her satır geçici bir alana yerleştirilir.
+- Yeni bir satır okunduğunda, geçici boşlukta eski metin yeni satırla değiştirilir.
+- Bu geçici alana kalıp alanı denir.
+- Tutma arabelleği uzun süreli bir depolama gibidir. metin, desen alanına ve desen alanından kopyalanabilir.
+
+komut | tanım
+--- | ---
+x | değişim tutma alanı ve desen alanı
+h | desen arabelleğini bekleme alanına kopyala
+H | tutma alanına desen arabelleği ekle
+g | tutma alanını desen alanına kopyala
+G | bekletme arabelleğini desen arabelleğine ekle
+
+### 11.4.1. Örnek
+- kalıp eşleşmesinden önce ve sonra bir satır yazdır<br>```sed -n '/999/ !{x;d};/999/ {x;p;x;p;n;p}' file.txt ```
+- her satırdan sonra boşluk ekleyin<br>```sed 'G' file.txt```
+- <br>```sed '/start/ {x;p;x}' file.txt``` kalıbıyla eşleşen her satırın üstüne boş satır ekleyin
+- Kalıpla eşleşen her satırdan sonra boş satır ekleyin<br>```sed '/start/ {G}' file.txt```
+- <br>```sed '/start/ {x;p;x;G}' file.txt``` kalıbıyla eşleşen her satırın önüne ve arkasına boş satır ekleyin
 
 # 12. ```awk```
-- command line utility to find, process and transform text files
-- the basic syntax is ```pattern { action }```
-  - the pattern is compared with every input line. pattern can be any regular expression
-  - when the pattern matches, the action is performed
-  - when no pattern is provided, the action is applied to every line
-  - example -> ```/^HTTP/ {print}```
-    - every line starting with HTTP is printed
-  - there are 2 other important patterns
-    - BEGIN - specifies actions to be performed, before any line is read
-    - END   - specifies actions to be performed, after all lines are read
-    - Example -> ```awk 'BEGIN{print "start"} {print} END{print "end"}' file.txt```
-      - first *start* is printed, then all lines of file.txt are printed and then *end* is printed
-- awk interprets each line as a record of fields
-- one or more consecutive spaces or tabs are considered as a single delimiter between fields
-- $1, $2, etc. represents the first field, second field, and so on.
-- $0 represents the entire input line
-- awk has 2 data types - strings and integers
-- awk internally converts variable according to context
-- awk supports associative arrays. example ```var[key] = value```
-- on integers, basic arithmatic operations (+-*/%) are supported. autoincrement(++) and decrement(--) is also supported.
+- metin dosyalarını bulmak, işlemek ve dönüştürmek için komut satırı yardımcı programı
+- temel sözdizimi ```pattern { action }```
+  - desen her giriş satırıyla karşılaştırılır. desen herhangi bir normal ifade olabilir
+  - desen eşleştiğinde eylem gerçekleştirilir
+  - desen sağlanmadığında, eylem her satıra uygulanır
+  - örnek -> ```/^HTTP/ {print}```
+    - HTTP ile başlayan her satır yazdırılır
+  - 2 önemli model daha var
+    - BAŞLA - herhangi bir satır okunmadan önce gerçekleştirilecek eylemleri belirtir
+    - END - tüm satırlar okunduktan sonra gerçekleştirilecek eylemleri belirtir
+    - Örnek -> ```awk 'BEGIN{print "start"} {print} END{print "end"}' file.txt```
+      - önce *start* yazdırılır, ardından file.txt'nin tüm satırları yazdırılır ve ardından *end* yazdırılır
+- awk, her satırı alanların kaydı olarak yorumlar
+- bir veya daha fazla ardışık boşluk veya sekme, alanlar arasında tek bir sınırlayıcı olarak kabul edilir
+- $1, $2, vb. birinci alanı, ikinci alanı vb. temsil eder.
+- $0 tüm giriş satırını temsil eder
+- awk'nin 2 veri türü vardır - dizeler ve tamsayılar
+- awk, değişkeni bağlama göre dahili olarak dönüştürür
+- awk ilişkisel dizileri destekler. örnek ```var[anahtar] = değer```
+- tamsayılarda temel aritmatik işlemler (+-*/%) desteklenir. otomatik artırma(++) ve azaltma(--) da desteklenir.
 
-## 12.1. Actions
-- following are few actions that can be performed
+## 12.1. Hareketler
+- aşağıdakiler gerçekleştirilebilecek birkaç eylemdir
 
-action                                                                      | description
----                                                                         | ---
-{ print $0; }                                                               | print records
-{ exit; }                                                                   | ends program
-{ next; }                                                                   | skips current line
-{a=$1; b="X"}                                                               | variable assignment
-{ c[$1] = $2 }                                                              | array varaible assignment
-{if (condition) { action } else if (condition) { action } else { action }}  | if else conditions
-{ for (i=1; i < x; i++) { action } }                                        | for loop
-{ for (item in c) { action } }                                              | for loop iterating over a list
+eylem | tanım
+--- | ---
+{ $0 yazdır; } | kayıtları yazdır
+{ çıkış; } | programı sonlandırır
+{ sonraki; } | geçerli satırı atlar
+{a=$1; b="X"} | değişken atama
+{ c[$1] = $2 } | dizi değişken ataması
+{if (koşul) { eylem } else if (koşul) { eylem } başka { eylem }} | aksi takdirde koşullar
+{ for (i=1; i < x; i++) { eylem } } | döngü için
+{ for (c'deki öğe) { action } } | bir liste üzerinde yinelenen döngü için
 
-## 12.2. Special variables
+## 12.2. Özel değişkenler
 
-variable    | desc
----         | ---
-FS          | Input field separator. can be modified
-RS          | Input record separator. default value is newline. can be modified by user
-OFS         | Output field separator. can be modified
-ORS         | Output record separator. default value is newline. can be modified by user
-NF          | Number of fields in the current line (record). cannot be updated by user
-NR          | Number of lines processed so far. cannot be updated by user
+değişken | azalan
+--- | ---
+FS | Giriş alanı ayırıcı. değiştirilebilir
+RS | Giriş kayıt ayırıcı. varsayılan değer yeni satırdır. kullanıcı tarafından değiştirilebilir
+OFS | Çıkış alanı ayırıcı. değiştirilebilir
+ORS | Çıkış kayıt ayırıcı. varsayılan değer yeni satırdır. kullanıcı tarafından değiştirilebilir
+NF | Geçerli satırdaki (kayıttaki) alan sayısı. kullanıcı tarafından güncellenemez
+NR | Şu ana kadar işlenen satır sayısı. kullanıcı tarafından güncellenemez
 
-*Note: -F option can be used to update the input field separator -> ```awk -F":"'{ print $1 }' file.txt```*
+*Not: -F seçeneği, giriş alanı ayırıcısını güncellemek için kullanılabilir -> ```awk -F":"'{ print $1 }' file.txt```*
 
-## 12.3. Examples
-- split up “,” (comma) separated fields and print the third field ($3)<br>```awk -F"," '{print $2}' file.txt```
-- print the 3rd field of a csv if the second field ($2) exists and is not empty<br>```awk -F"," '{if ($2)print $3}' file.txt```
-- print the last field in each line<br>```awk -F"," '{ print $NF }' file.txt```
-- print the line after the line matching search pattern<br>```awk '/pattern/ { i=1; next; } {if(i) {i--; print;}}' file.txt```
-- print the line and the 2 lines after the line matching search pattern<br>```awk '/regexp/ {i=3;} { if(i) {i--; print;}}' file.txt```
-- print the lines from a file starting at the line matching *start* until the line matching *stop*<br>```awk '/start/,/stop/' file.txt```
-- count lines (wc -l)<br>```awk 'END{print NR}' file.txt```
-- print matching lines (grep)<br>```awk '/pattern/'```
-- print non matching lines (grep -v)<br>```awk '!/pattern/'```
-- remove duplicate consecutive lines (uniq)<br>```awk 'a !~ $0 {print}; {a=$0}' file.txt```
-- print first 10 lines of file (head)<br>```awk 'NR < 11' file.txt```
-- print last 10 lines of file (tail)<br>```awk '{vect[NR]=$0;} END{for(i=NR-9;i<=NR;i++) {print vect[i];}}' file.txt```
-- print the total number of bytes used by files<br>```ls -l | awk '{ x += $5 } END { print "Total bytes: " x }'```
+## 12.3. Örnekler
+- “,” (virgülle) ayrılmış alanları bölün ve üçüncü alanı (3 $) yazdırın<br>```awk -F"," '{print $2}' file.txt```
+- ikinci alan ($2) varsa ve boş değilse, csv'nin 3. alanını yazdırın<br>```awk -F"," '{if ($2)yazdır $3}' file.txt```
+- her satırdaki son alanı yazdır<br>```awk -F"," '{ print $NF }' file.txt```
+- arama modeliyle eşleşen satırdan sonraki satırı yazdır<br>```awk '/pattern/ { i=1; sonraki; } {if(i) {i--; print;}}' file.txt```
+- arama modeliyle eşleşen satırdan sonraki satırı ve 2 satırı yazdır<br>```awk '/regexp/ {i=3;} { if(i) {i--; print;}}' file.txt```
+- *start* ile eşleşen satırdan başlayarak *stop*<br>```awk '/start/,/stop/' file.txt``` ile eşleşen satıra kadar bir dosyadan satırları yazdırın
+- satırları say (wc -l)<br>```awk 'END{print NR}' file.txt```
+- eşleşen satırları yazdır (grep)<br>```awk '/pattern/'```
+- eşleşmeyen satırları yazdır (grep -v)<br>```awk '!/pattern/'```
+- yinelenen ardışık satırları kaldırın (uniq)<br>```awk 'a !~ $0 {print}; {a=$0}' dosya.txt```
+- - dosyanın ilk 10 satırını yazdır (head)<br>```awk 'NR < 11' file.txt```
+- dosyanın son 10 satırını yazdır (kuyruk)<br>```awk '{vect[NR]=$0;} END{for(i=NR-9;i<=NR;i++) {vect[i] yazdır ;}}' dosya.txt```
+- dosyalar tarafından kullanılan toplam bayt sayısını yazdır<br>```ls -l | awk '{ x += $5 } END { print "Toplam bayt: " x }'```
 
-# 13. Command substitution
-- In command substitution, the output of a command replaces the command
-- the output of a command can be used an argument to another command
-- syntax is ``` `command` ```
+# 13. Komut ikamesi
+- Komut ikamesinde, komutun çıktısı komutun yerini alır
+- bir komutun çıktısı başka bir komutun argümanı olarak kullanılabilir
+- sözdizimi ``` `komut` ```
 
-## 13.1. Examples
-- assign the output of a command to a variable<br> ``` DATE=`date` ```
-- use the output of command as a parameter of another command<br> ``` vi `grep -l 123 *` ```
+## 13.1. Örnekler
+- bir komutun çıktısını bir değişkene atayın<br> ``` DATE=`date` ```
+- komutun çıktısını başka bir komutun parametresi olarak kullan<br> ``` vi `grep -l 123 *` ```
 
-# 14. Process substitution
-- the input or output of a command can appear as a file. This is known as process substitution
-- this technique is useful when we want to use the output of multiple commands as the input to a command
-- process substitution can also be used to capture output and redirect it to the input of a process
-- template - ```<(command)``` and ```>(command)```
+# 14. Süreç ikamesi
+- bir komutun girdisi veya çıktısı bir dosya olarak görünebilir. Bu süreç ikamesi olarak bilinir
+- bu teknik, bir komutun girdisi olarak birden çok komutun çıktısını kullanmak istediğimizde kullanışlıdır.
+- süreç ikamesi, çıktıyı yakalamak ve onu bir sürecin girdisine yönlendirmek için de kullanılabilir.
+- şablon - ```<(komut)``` ve ```>(komut)```
 
-## 14.1. Examples:
-- sort and compare two files<br>
-  ```diff <(sort file1) <(sort file2)```
+## 14.1. Örnekler:
+- iki dosyayı sıralayın ve karşılaştırın<br>
+  ```fark <(dosya1 sırala <(dosya2 sırala)```
 
-- compare 2 folders<br>
-  ```diff <(ls $first_directory) <(ls $second_directory)```
+- 2 klasörü karşılaştırın<br>
+  ```fark <(ls $ilk_dizin) <(ls $ikinci_dizin)```
 
-# 15. Subshell
-- a subshell is a child process launched by a shell
-- whenever a shell script is run, a subshell is created and the script is run in the subshell
-- variables defined in parent shell can be accessed if ```export``` is used while defining the variable
-- subshells can also be created using parentheses<br>
-  ```(command1; command2; command3)```
-- subshells are a convenient way to group commands. 
-- can be used to temporarily move to a different directory
+# 15. Alt Kabuk
+- bir alt kabuk, bir kabuk tarafından başlatılan bir alt işlemdir
+- bir kabuk komut dosyası çalıştırıldığında, bir alt kabuk oluşturulur ve komut dosyası alt kabukta çalıştırılır
+- ana kabukta tanımlanan değişkenlere, değişken tanımlanırken ```export``` kullanılırsa erişilebilir
+- parantezler kullanılarak alt kabuklar da oluşturulabilir<br>
+  ```(komut1; komut2; komut3)```
+- alt kabuklar, komutları gruplandırmanın uygun bir yoludur.
+- geçici olarak farklı bir dizine geçmek için kullanılabilir
 ```bash
-#do something in current directory
-(cd some/other/directory; other-command)
-#back in the original directory
+#geçerli dizinde bir şeyler yap
+(cd bazı/diğer/dizin; diğer komut)
+#orijinal dizine geri dön
 ```
-- to run a command or script in the current shell, without creating a subshell, use '.' as in ```. script.sh```
+- geçerli kabukta bir alt kabuk oluşturmadan bir komut veya komut dosyası çalıştırmak için '.' kullanın. ``` da olduğu gibi. script.sh```
 
 
 # 16. ssh
-- ssh (SSH client) is a program for logging into a remote machine and for executing commands on a remote machine
-- syntax ```ssh user@host```
-- running a single command on remote server<br>```ssh user@host command_to_run```
-- logging into server with different port<br>```ssh -p portnum user@host```
-- ssh connection using host in the middle```ssh -t reachable_host ssh unreachable_host```
+- ssh (SSH istemcisi), uzak bir makinede oturum açmak ve uzak bir makinede komutları yürütmek için bir programdır.
+- sözdizimi ```ssh user@host```
+- uzak sunucuda tek bir komut çalıştırma<br>```ssh user@host command_to_run```
+- sunucuya farklı bağlantı noktasıyla oturum açma<br>```ssh -p portnum user@host```
+- ortadaki ana bilgisayar kullanılarak ssh bağlantısı ''ssh -t ulaşılabilir_konakçı ssh erişilemez_konakçı'''
 
 
-# 17. Text editing with ```cut```, ```paste``` and ```join```
+# 17. "Kes", "Yapıştır" ve "Birleştir" ile metin düzenleme
 
-## 17.1. ```cut```
-- ```cut``` command cuts out sections from each line and writes result to standard output
-- syntax is ```cut OPTION [FILE]```
+## 17.1. '''kes'''
+- ```cut``` komutu her satırdan bölümleri keser ve sonucu standart çıktıya yazar
+- sözdizimi ```cut OPTION [DOSYA]```
 
-option  | description
----     | ---
--c      | character range which will be selected
--d      | delimiter which will separate each fields in line in file
--f      | fields which will be printed
+seçenek | tanım
+--- | ---
+-c | seçilecek karakter aralığı
+-d | dosyadaki satırdaki her alanı ayıracak sınırlayıcı
+-f | yazdırılacak alanlar
 
-when -c option is used, ranges can be specified. Each range can be one of:
-range type  | description
----         | ---
-N           | Nth character
-N-          | fron Nth character to end of line
-N-M         | from Nth character to Mth character
--M          | from first to Mth character
+-c seçeneği kullanıldığında aralıklar belirtilebilir. Her aralık şunlardan biri olabilir:
+aralık tipi | tanım
+--- | ---
+N | N. karakter
+N- | Nth karakterinden satırın sonuna kadar
+N-M | N. karakterden M. karaktere
+-M | ilk karakterden Mth karakterine
 
-### 17.1.1. Examples
-- print the first and third columns of a csv file<br>```cut -f1,3 -d"," file.txt```
-- print the first 3 characters of each line<br>```cut -c -3 file.txt```
+### 17.1.1. Örnekler
+- bir csv dosyasının birinci ve üçüncü sütunlarını yazdırın<br>```cut -f1,3 -d"," file.txt```
+- her satırın ilk 3 karakterini yazdır<br>```cut -c -3 file.txt```
 
-## 17.2. ```paste```
-- merges lines of files
-- by default, the lines from each files are delimited by tab
-- when '-' is used instead of filename, the command reads from standard input
-- syntax ```paste [OPTION] [FILE] [FILE]```
+## 17.2. '''yapıştır'''
+- dosya satırlarını birleştirir
+- varsayılan olarak, her dosyadan gelen satırlar sekme ile sınırlandırılır
+- dosya adı yerine '-' kullanıldığında, komut standart girdiden okunur
+- sözdizimi ```yapıştır [SEÇENEK] [DOSYA] [DOSYA]```
   
-option  | description
----     | ---
--d      | used to specify the delimiter
--s      | paste one file at a time
+seçenek | tanım
+--- | ---
+-d | sınırlayıcıyı belirtmek için kullanılır
+-s | bir seferde bir dosya yapıştırın
 
-### 17.2.1. Examples
-lets take 2 files - number.txt and name.txt
-> cat number.txt
+### 17.2.1. Örnekler
+2 dosya alalım - number.txt ve name.txt
+> kedi numarası.txt
 > 1<br>
 > 2<br>
 > 3<br>
 > 4<br>
 
-> cat name.txt
+> kedi adı.txt
 > Alice<br>
 > Bob<br>
 > Charlie<br>
-> David<br>
+> Davut<br>
 
-- merge 2 files, first file will give the first column and second file will give the second column<br>```paste number.txt name.txt```
-- merge 2 files, delimited by ','<br>```paste -d"," number.txt name.txt```
-- merge 2 files, sequentially, i.e first only first file is printed and then only the second file<br>```paste -s number.txt name.txt```
+- 2 dosyayı birleştir, ilk dosya ilk sütunu verecek ve ikinci dosya ikinci sütunu verecek<br>```numarayı.txt adını yapıştırın.txt```
+- ','<br>```paste -d"," number.txt name.txt``` ile sınırlandırılmış 2 dosyayı birleştir
+- 2 dosyayı sırayla birleştirin, yani ilk önce yalnızca ilk dosya yazdırılır ve ardından yalnızca ikinci dosya<br>```paste -s number.txt name.txt```
 
-## 17.3. ```join```
-- join lines of two files on a common field
-- syntax ```join [OPTIONS] FILE1 FILE2```
+## 17.3. '' katıl '''
+- ortak bir alanda iki dosyanın satırlarını birleştirin
+- sözdizimi ```katıl [SEÇENEKLER] DOSYA1 DOSYA2```
 
-### 17.3.1. Examples
-lets take 2 files - number.txt and name.txt
-> cat number.txt
+### 17.3.1. Örnekler
+2 dosya alalım - number.txt ve name.txt
+> kedi numarası.txt
 > 1 100<br>
 > 2 101<br>
 > 3 102<br>
 > 4 103<br>
 > 5 104<br>
 
-> cat name.txt
+> kedi adı.txt
 > 1 Alice<br>
 > 2 Bob<br>
 > 3 Charlie<br>
-> 4 David<br>
+> 4 Davut<br>
 
-- join 2 files based on the first column<br>```join number.txt name.txt```
+- ilk sütuna göre 2 dosyayı birleştirin<br>```numara.txt adını birleştirin.txt```
 
-# 18. Aliases
-- aliases are short names for long commands
-- when we need to execute long commands multiple times, it is advisable to create aliases
-- syntax - ```alias [-p] [name[=value]]```
-- we can create permanent alias by storing them in configuration files
-- to temporarily bypass an alias, use \ -> ```\ll```
+# 18. Takma Adlar
+- takma adlar, uzun komutlar için kısa adlardır
+- uzun komutları birden çok kez çalıştırmamız gerektiğinde, takma adlar oluşturmanız önerilir
+- sözdizimi - ```takma ad [-p] [ad[=değer]]```
+- bunları yapılandırma dosyalarında saklayarak kalıcı takma ad oluşturabiliriz
+- bir takma adı geçici olarak atlamak için \ -> ```\ll``` kullanın
 
-- creating a alias<br>```alias name='values'```
-- removing alias<br>```unalias name```
-- print all defined alias<br>```alias -p```
+- takma ad oluşturma<br>```takma ad='değerler'```
+- takma adı <br>```unalias name``` kaldırılıyor
+- tanımlanmış tüm takma adları yazdır<br>```takma ad -p```
 
-## 18.1. useful aliases
+## 18.1. faydalı takma adlar
 ```bash
-alias gh='history|grep'
-alias c=clear
-alias cx='chmod +x'
-alias ..='cd ..'
-alias sl=ls
-alias left='ls -t -1'
-alias count='find . -type f | wc -l'
-alias f='find . |grep '
+takma ad gh='geçmiş|grep'
+takma ad cx='chmod +x'
+takma ad ..='cd ..'
+takma ad sl=ls
+takma ad sol='ls -t -1'
+takma ad sayısı='bul . -tip f | wc -l'
+takma ad f='bul . |grep'
 ```
 
-# 19. Functions
-- set of commands that accomplish a specific task
-- can be used numerous times
-- helps avoid writing the same code repeatedly
-- can use loops and conditions within them
-- arguments can be passed to functions
-- by using ```export -f functionname```, we can make the functions available to shell scripts
-  - export can be added to configuration files like *.bashrc*
-  - To keep things modular, create a new file called ~/.bash_functions and then have your .bashrc load it
-- syntax<br> 
+# 19. Fonksiyonlar
+- belirli bir görevi yerine getiren komutlar seti
+- defalarca kullanılabilir
+- aynı kodu tekrar tekrar yazmaktan kaçınmaya yardımcı olur
+- döngüleri ve içlerindeki koşulları kullanabilir
+- işlevlere argümanlar iletilebilir
+- ``export -f functionname``` kullanarak, fonksiyonları kabuk betiklerinde kullanılabilir hale getirebiliriz.
+  - *.bashrc* gibi yapılandırma dosyalarına dışa aktarma eklenebilir
+  - İşleri modüler tutmak için ~/.bash_functions adında yeni bir dosya oluşturun ve ardından .bashrc'nizin onu yüklemesini sağlayın
+- sözdizimi<br>
 ```bash
-function_name () {
-  commands
+fonksiyon adı () {
+  komutlar
 }
 ```
 
 ```bash
-function_name () { commands; }
+işlev_adı () { komutlar; }
 ```
 
-## 19.1. useful functions
+## 19.1. faydalı fonksiyonlar
 ```bash
 mcd() { mkdir -p "$1"; cd "$1";}
 cdl() { cd "$1"; ls;}
 ```
 
-# 20. sort
-- sort lines text files
+# 20. sıralama
+- satır metin dosyalarını sırala
 
-option  | description
----     | ---
--r      | sort in reverse order
--n      | sort in numberical order
--k <n>  | sort based on nth column
--u      | sort and remove duplicates
+seçenek | tanım
+--- | ---
+-r | ters sırada sıralama
+-n | numara sırasına göre sırala
+-k <n> | n. sütuna göre sırala
+-u | kopyaları sırala ve kaldır
 
-# 21. uniq
-- report or omit repeated lines
-- the input file must be sorted
+# 21. benzersiz
+- tekrarlanan satırları rapor edin veya atlayın
+- giriş dosyası sıralanmalıdır
 
-option  | description
----     | ---
--c      | show how many times a line is repeated
--d      | prints only the repeated lines only once
--u      | prints only the unique lines
--i      | case insensitive comparison
+seçenek | tanım
+--- | ---
+-c | bir satırın kaç kez tekrarlandığını göster
+-d | yalnızca tekrarlanan satırları yalnızca bir kez yazdırır
+-u | yalnızca benzersiz satırları yazdırır
+-i | büyük/küçük harfe duyarsız karşılaştırma
 
 
-# 22. Conditions
-## 22.1. If else
-- if-then-else is supported in command line
-- Syntax
+# 22. Koşullar
+## 22.1. eğer başka
+- if-then-else komut satırında desteklenir
+- Sözdizimi
 ```bash
-if [ condition1 ]; then command1;
-elif [ condition2 ]; then command2;
-else command3; fi
+eğer [ koşul1 ]; sonra komut1;
+elif [ koşul2 ]; sonra komut2;
+başka komut3; fi
 ```
 
 ```bash
-if [ condition1 ]; then command1; elif [ condition2 ]; then command2; else command3; fi
+eğer [ koşul1 ]; sonra komut1; elif [ koşul2 ]; sonra komut2; başka komut3; fi
 ```
-- there are different types of conditions
-  1. file based condiitons
+- farklı koşullar var
+  1. dosya tabanlı koşullar
 
-conditions  | description
----         | ---
--a          | check if file exists
--r          | check if file exists and is readable
--w          | check if file exists and is writable
--d          | check if file exists and is a directory
+koşullar | tanım
+--- | ---
+-a | dosyanın var olup olmadığını kontrol edin
+-r | dosyanın var olup olmadığını ve okunabilir olup olmadığını kontrol edin
+-w | dosyanın var olup olmadığını ve yazılabilir olup olmadığını kontrol edin
+-d | dosyanın var olup olmadığını ve bir dizin olup olmadığını kontrol edin
 
-  2. string based conditions
+  2. dize tabanlı koşullar
 
-conditions  | description
----         | ---
-==          | check if both the strings are equal
-!=          | check if both the strings are not equal
-\>          | check if the first string is lexicographically greater than the second
-<           | check if the first string is lexicographically smaller than the second
--n          | check if the string has a length more than 0
--z          | check if the string is an empty string
+koşullar | tanım
+--- | ---
+== | her iki dizenin de eşit olup olmadığını kontrol edin
+!= | her iki dizenin de eşit olup olmadığını kontrol edin
+\> | ilk dizenin sözlükbilimsel olarak ikinciden daha büyük olup olmadığını kontrol edin
+< | ilk dizenin sözlükbilimsel olarak ikinciden daha küçük olup olmadığını kontrol edin
+-n | dizenin 0'dan fazla olup olmadığını kontrol edin
+-z | dizenin boş bir dize olup olmadığını kontrol edin
 
-  3. number based conditions
+  3. sayıya dayalı koşullar
 
-conditions  | descr>iption
----         | ---
--eq         | check if the numbers are equal
--ne         | check if the numbers are not equal
--gt         | check if the first number is greater than the second
--ge         | check if the first number is greater than or equal to the second
--lt         | check if the first number is less than the second
--le         | check if the first number is less than or equal to the second
+koşullar | açıklama
+--- | ---
+-eq | sayıların eşit olup olmadığını kontrol edin
+-ne | sayıların eşit olup olmadığını kontrol edin
+-gt | ilk sayının ikinciden büyük olup olmadığını kontrol edin
+-ge | ilk sayının ikinciden büyük veya ona eşit olup olmadığını kontrol edin
+-lt | ilk sayının ikinciden küçük olup olmadığını kontrol edin
+-le | ilk sayının ikinciden küçük veya ona eşit olup olmadığını kontrol edin
 
 
-- 0 is considered true and numbers greater than 0 are considered false. 
-  - this is because in Unix/Linix, when a process ends successfuly, it returns 0
+- 0 doğru olarak kabul edilir ve 0'dan büyük sayılar yanlış olarak kabul edilir.
+  - bunun nedeni Unix/Linix'te bir işlem başarıyla sona erdiğinde 0 döndürmesidir.
 
-## 22.2. Short circuiting
-- an alternative way of using conditions is by using logical AND (&&) and logical OR(||)
-- evaluation of a logical expression is stopped, as soon as the outcome has been determined. This is known as short-circuiting.
-- in case of Logical AND, as soon as sub-expression becomes false, the whole expression evaluates to false
-  - in case of *expr1 && expr2*, if expr1 evaluates to false, then the whole expression will evaluate to false. So, expr2 is not evaluated at all.
-  - && can be used to ensure that command2 is run only if command1 ends successfully. example ->```command1 && command2``` 
-- in case of Logical OR, as soon as sub-expression becomes true, the whole expression evaluates to true
-  - in case of *expr1 || expr2*, if expr1 evaluates to true, then the whole expression will evaluate to true. So, expr2 is not evaluated at all.
-  - || can be used to ensure that command2 is run only if command1 fails. example -> ```command1 || command2```
+## 22.2. kısa devre
+- koşulları kullanmanın alternatif bir yolu, mantıksal VE (&&) ve mantıksal VEYA(||) kullanmaktır.
+- sonuç belirlenir belirlenmez mantıksal bir ifadenin değerlendirilmesi durdurulur. Bu kısa devre olarak bilinir.
+- Mantıksal VE durumunda, alt ifade yanlış olur olmaz, ifadenin tamamı yanlış olarak değerlendirilir
+  - *ifade1 && ifade2* durumunda, ifade1 yanlış olarak değerlendirilirse, tüm ifade false olarak değerlendirilir. Yani, ifade2 hiç değerlendirilmez.
+  - &&, komut2'nin yalnızca komut1 başarıyla sona ererse çalıştırılmasını sağlamak için kullanılabilir. örnek ->```komut1 && komut2```
+- Mantıksal VEYA durumunda, alt ifade doğru olur olmaz tüm ifade doğru olarak değerlendirilir
+  - *ifade1 durumunda || ifade2*, ifade1 doğru olarak değerlendirilirse, tüm ifade doğru olarak değerlendirilir. Yani, ifade2 hiç değerlendirilmez.
+  - || komut2'nin yalnızca komut1 başarısız olursa çalıştırılmasını sağlamak için kullanılabilir. örnek -> ```komut1 || komut2```
 
-### 22.2.1. example
-- create folder if it does not exist  
+### 22.2.1. örnek
+- yoksa klasör oluştur
 ```bash
-  [ -d ./some/path/folder ] || mkdir /some/path/folder
+  [ -d ./some/path/folder ] || mkdir /bazı/yol/klasör
 ```
 
-- create create file only if folder exists
+- yalnızca klasör varsa dosya oluştur
 ```bash
-  cd /some/path/folder && touch file.txt
+  cd /some/path/klasör && file.txt'e dokunun
 ```
 
-# 23. Loops
-## 23.1. while loops
-- the loop runs as long as the given condition is true
-- syntax 
-  ```bash 
-  while [ condition ]; do commands; done
-  ```
-### 23.1.1. example
-- print all the folders with .c files<br>
-```bash
-find . -name *.c | {while read filename; do dirname $filename; done;} | sort | uniq # dirname returns the directory name
-```
-
-
-## 23.2. for loops
-- the loop iterates over a list of values or preset number of times
-- syntax 
+# 23. Döngüler
+## 23.1. döngüler sırasında
+- döngü verilen koşul doğru olduğu sürece çalışır
+- sözdizimi
   ```bash
-  for <variable name> in <a list of items>;do <some command> $<variable name>;done;
+  while [ koşul ]; komutları yapmak; tamamlamak
   ```
-### 23.2.1. example
-- copy files from one folder to another
+### 23.1.1. örnek
+- tüm klasörleri .c dosyalarıyla yazdırın<br>
 ```bash
-for i in ./code/*.txt; do cp $i /home/code/backup; done
+bulmak . -isim *.c | {dosya adını okurken; dirname $dosyaadı yapın; bitti;} | sıralama | uniq # dirname dizin adını döndürür
 ```
-# 24. One liners
-
-- print the files and directories in tree structure<br>```find . | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/|-\1/"```
-- print the directories in tree structure<br>```find . -type d   | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/| - \1/"```
-- quick access to ascii table<br>```man ascii```
-- find common lines in 2 files<br>```cat file1 file2 | uniq -d```
-- find lines in file1 that is not present in file2<br>```cat file1 file2 file2 | uniq -u```
-- find most frequently used commands<br>```history | cut -c8- | sort | uniq -c | sort -rn | head```
-- recursively remove only directories with no files<br>```find . -depth -type d -exec rmdir {} \;```
-
-# 25. Further reading
-- 
-
-# 26. Change History
-- presented in reversed chronological order i.e. the latest change is at the top
-
-Name                 | Date         | Change Description
-----                 | ----         | ---
-Utsav Barman         | 25 Jan 2022  | Added wait, globbing, grep -o; fixed typos
-Utsav Barman         | 24 Jan 2022  | Initial draft
 
 
+## 23.2. döngüler için
+- döngü, bir değerler listesi veya önceden ayarlanmış sayıda yinelenir
+- sözdizimi
+  ```bash
+  <bir öğe listesi> içindeki <değişken adı> için;do <bir komut> $<değişken adı>;done;
+  ```
+### 23.2.1. örnek
+- dosyaları bir klasörden diğerine kopyalayın
+```bash
+./code/*.txt içindeki i için; cp $i /home/code/yedekleme yapın; tamamlamak
+```
+# 24. Bir gömlek
 
+- ağaç yapısındaki dosyaları ve dizinleri yazdırın<br>```find . | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/|-\1/"```
+- dizinleri ağaç yapısında yazdırın<br>```find . -tip d | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/| - \1/"```
+- ascii tablosuna hızlı erişim<br>```man ascii```
+- 2 dosyada ortak satırları bulun<br>```cat dosya1 dosya2 | uniq -d```
+- dosya1'de dosya2'de bulunmayan satırları bulun<br>```cat dosya1 dosya2 dosya2 | benzersiz -u```
+- en sık kullanılan komutları bulun<br>```geçmiş | kesme -c8- | sıralama | tek -c | sırala -rn | kafa```
+- yalnızca dosya içermeyen dizinleri tekrar tekrar kaldırın<br>```find . -derinlik -type d -exec rmdir {} \;```
+# 25. Daha fazla okuma
+-
 
+# 26. Değişen Tarihi
+- Ters kronolojik yolda, yani en son yardım en üsttedir.
+
+İsim | Tarih | Açıklamayı Değiştir
+---- | ---- | ---
+Utsav Barmen | 25 Ocak 2022 | Bekleme, globbing, grep -o eklendi; sabit yazım hataları
