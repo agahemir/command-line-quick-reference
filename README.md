@@ -22,7 +22,7 @@
 - [8. Temel Dosya Yönetimi](#8-temel-dosya-yönetimi)
   - [8.1. Dizin Listeleme```ls```](#81-dizin-listeleme)
   - [8.2. Dosya İçeriğini Gösterme](#82-dosya-içeriğini-gösterme)
-  - [8.3. Dosya Yönetimi(#83-dosya-yönetimi)
+  - [8.3. Dosya Yönetimi(#83-dosya-yönetimi)]
     - [8.3.1. Kopyalama](#831-kopyalama)
     - [8.3.2. Taşıma ve Yeniden Adlandırma](#832-taşıma-ve-yeniden-adlandırma)
     - [8.3.3. Silme](#833-silme)
