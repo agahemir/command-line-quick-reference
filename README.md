@@ -11,75 +11,41 @@
   - [3.2. Yeniden Yönlendirmeler](#32-yeniden-yönlendirmeler)
     - [3.2.1. Biçimler](#321-biçimler)
     - [3.2.2. Ek Örnekler](#322-ek-örnekler)
-      - [3.2.2.1. Send standard output to sout.txt and standard error to serr.txt](#3221-send-standard-output-to-souttxt-and-standard-error-to-serrtxt)
+      - [3.2.2.1. Standart çıktıyı sout.txt'ye gönderir ve standart hatayı serr.txt'ye gönderir.](#3221-standart-çıktıyı-souttxtye-gönderir-ve-standart-hatayı serrtxtye-gönderir.)
       - [3.2.2.2. Send standard output and standard error streams to the same file sone.txt](#3222-send-standard-output-and-standard-error-streams-to-the-same-file-sonetxt)
-      - [3.2.2.3. Ignore both standard input and output](#3223-ignore-both-standard-input-and-output)
+      - [3.2.2.3. Hem standart girdiyi hem de çıktıyı görmezden gelir.](#3223-hem-standart-girdiyi-hem-de-çıktıyı-görmezden-gelir)
   - [3.3. Pipe](#33-pipe)
   - [3.4. xargs](#34-xargs)
   - [3.5. tee](#35-tee)
-- [4. Dosya Adı Genişletme](#4-filename-expansion)
+- [4. Dosya Adı Genişletme](#4-dosya-adı-genişletme)
 - [5. İş Kontrolü](#5-job-control)
-- [6. Process handling](#6-process-handling)
-  - [6.1. difference between ```ps``` and ```jobs```](#61-difference-between-ps-and-jobs)
-- [7. Quoting](#7-quoting)
-- [8. Basic file management](#8-basic-file-management)
-  - [8.1. list directory ```ls```](#81-list-directory-ls)
-  - [8.2. show file contents](#82-show-file-contents)
-  - [8.3. file handling](#83-file-handling)
-    - [8.3.1. copy](#831-copy)
-    - [8.3.2. move or rename](#832-move-or-rename)
-    - [8.3.3. delete](#833-delete)
-    - [8.3.4. file linking](#834-file-linking)
-    - [8.3.5. change directory](#835-change-directory)
+- [6. Süreç Yönetimi](#6-süreç-yönetimi)
+  - [6.1. ```ps``` ve ```jobs``` Arasındaki Farklar](#61--ps-ve-jobs-arasındaki-farklar)
+- [7. Alıntılar](#7-quoting)
+- [8. Temel Dosya Yönetimi](#8-temel-dosya-yönetimi)
+  - [8.1. Dizin Listeleme```ls```](#81-dizin-listeleme)
+  - [8.2. Dosya İçeriğini Gösterme](#82-dosya-içeriğini-gösterme)
+  - [8.3. Dosya Yönetimi(#83-dosya-yönetimi)
+    - [8.3.1. Kopyalama](#831-kopyalama)
+    - [8.3.2. Taşıma ve Yeniden Adlandırma](#832-taşıma-ve-yeniden-adlandırma)
+    - [8.3.3. Silme](#833-silme)
+    - [8.3.4. Dosya Bağantısı](#834-dosya-bağlantısı)
+    - [8.3.5. Dizin Değiştir (CD)](#835-dizin-değiştir)
 - [9. ```grep```](#9-grep)
-  - [9.1. Useful ```grep``` options](#91-useful-grep-options)
-    - [9.1.1. Examples](#911-examples)
-  - [9.2. Regular expression in grep](#92-regular-expression-in-grep)
-  - [9.3. Examples](#93-examples)
+  - [9.1. Kullanışlı ```grep``` seçenekleri](#91-kullanışlı-grep-seçenekleri)
+    - [9.1.1. Örnekler](#911-örnekler)
+  - [9.2. Grep'te Düzenli İfadeler (Regex)](#92-grepte-düzenli-ifadeler-regex)
+  - [9.3. Örnekler](#93-örnekler)
 - [10. ```find```](#10-find)
-  - [10.1. Examples](#101-examples)
-- [11. ```sed``` filter and transform text](#11-sed-filter-and-transform-text)
-  - [11.1. Overview](#111-overview)
-  - [11.2. Examples](#112-examples)
-  - [11.3. Grouping](#113-grouping)
-    - [11.3.1. Grouping Examples:](#1131-grouping-examples)
+  - [10.1. Örnekler](#101-örnekler)
+- [11. ```sed``` Metni filtrele ve dönüştür(çevir)](#11-metni-filtrele-ve-dönüştür)
+  - [11.1. Genel Bakış](#111-genel-bakış)
+  - [11.2. Örnekler](#112-örnekler)
+  - [11.3. Gruplama](#113-gruplama)
+    - [11.3.1. Gruplama Örnekleri:](#1131-gruplama-örnekleri)
   - [11.4. Hold Buffer](#114-hold-buffer)
-    - [11.4.1. Example](#1141-example)
-- [12. ```awk```](#12-awk)
-  - [12.1. Actions](#121-actions)
-  - [12.2. Special variables](#122-special-variables)
-  - [12.3. Examples](#123-examples)
-- [13. Command substitution](#13-command-substitution)
-  - [13.1. Examples](#131-examples)
-- [14. Process substitution](#14-process-substitution)
-  - [14.1. Examples:](#141-examples)
-- [15. Subshell](#15-subshell)
-- [16. ssh](#16-ssh)
-- [17. Text editing with ```cut```, ```paste``` and ```join```](#17-text-editing-with-cut-paste-and-join)
-  - [17.1. ```cut```](#171-cut)
-    - [17.1.1. Examples](#1711-examples)
-  - [17.2. ```paste```](#172-paste)
-    - [17.2.1. Examples](#1721-examples)
-  - [17.3. ```join```](#173-join)
-    - [17.3.1. Examples](#1731-examples)
-- [18. Aliases](#18-aliases)
-  - [18.1. useful aliases](#181-useful-aliases)
-- [19. Functions](#19-functions)
-  - [19.1. useful functions](#191-useful-functions)
-- [20. sort](#20-sort)
-- [21. uniq](#21-uniq)
-- [22. Conditions](#22-conditions)
-  - [22.1. If else](#221-if-else)
-  - [22.2. Short circuiting](#222-short-circuiting)
-    - [22.2.1. example](#2221-example)
-- [23. Loops](#23-loops)
-  - [23.1. while loops](#231-while-loops)
-    - [23.1.1. example](#2311-example)
-  - [23.2. for loops](#232-for-loops)
-    - [23.2.1. example](#2321-example)
-- [24. One liners](#24-one-liners)
-- [25. Further reading](#25-further-reading)
-- [26. Change History](#26-change-history)
+    - [11.4.1. Örnekler](#1141-örnekler)
+- [12. Değişme Tarihi](#24-değişme-tarihi)
 
 
 # 1. Giriş
@@ -520,389 +486,29 @@ y       | Değiştirir.
 
 
 
-## 11.4. Tampon tutun
+## 11.4. Hold Buffer
 - sed metni okuduğunda, her satır geçici bir alana yerleştirilir.
 - Yeni bir satır okunduğunda, geçici boşlukta eski metin yeni satırla değiştirilir.
 - Bu geçici alana kalıp alanı denir.
-- Tutma arabelleği uzun süreli bir depolama gibidir. metin, desen alanına ve desen alanından kopyalanabilir.
+- Hold Buffer uzun süreli bir depolama gibidir. metin, desen alanına ve desen alanından kopyalanabilir.
 
-komut | tanım
+Komut | Tanım
 --- | ---
-x | değişim tutma alanı ve desen alanı
-h | desen arabelleğini bekleme alanına kopyala
-H | tutma alanına desen arabelleği ekle
-g | tutma alanını desen alanına kopyala
-G | bekletme arabelleğini desen arabelleğine ekle
+x | Değişim tutma alanı ve desen alanı.
+h | Desen arabelleğini bekleme alanına kopyalar.
+H | Tutma alanına desen arabelleği ekler.
+g | Tutma alanını desen alanına kopyalar.
+G | Bekletme arabelleğini desen arabelleğine ekler.
 
 ### 11.4.1. Örnek
-- kalıp eşleşmesinden önce ve sonra bir satır yazdır<br>```sed -n '/999/ !{x;d};/999/ {x;p;x;p;n;p}' file.txt ```
-- her satırdan sonra boşluk ekleyin<br>```sed 'G' file.txt```
-- <br>```sed '/start/ {x;p;x}' file.txt``` kalıbıyla eşleşen her satırın üstüne boş satır ekleyin
+- kalıp eşleşmesinden önce ve sonra bir satır yazdırır:<br>```sed -n '/999/ !{x;d};/999/ {x;p;x;p;n;p}' file.txt ```
+- her satırdan sonra boşluk ekler:<br>```sed 'G' file.txt```
+- <br>```sed '/start/ {x;p;x}' file.txt``` kalıbıyla eşleşen her satırın üstüne boş satır ekler.
 - Kalıpla eşleşen her satırdan sonra boş satır ekleyin<br>```sed '/start/ {G}' file.txt```
-- <br>```sed '/start/ {x;p;x;G}' file.txt``` kalıbıyla eşleşen her satırın önüne ve arkasına boş satır ekleyin
-
-# 12. ```awk```
-- metin dosyalarını bulmak, işlemek ve dönüştürmek için komut satırı yardımcı programı
-- temel sözdizimi ```pattern { action }```
-  - desen her giriş satırıyla karşılaştırılır. desen herhangi bir normal ifade olabilir
-  - desen eşleştiğinde eylem gerçekleştirilir
-  - desen sağlanmadığında, eylem her satıra uygulanır
-  - örnek -> ```/^HTTP/ {print}```
-    - HTTP ile başlayan her satır yazdırılır
-  - 2 önemli model daha var
-    - BAŞLA - herhangi bir satır okunmadan önce gerçekleştirilecek eylemleri belirtir
-    - END - tüm satırlar okunduktan sonra gerçekleştirilecek eylemleri belirtir
-    - Örnek -> ```awk 'BEGIN{print "start"} {print} END{print "end"}' file.txt```
-      - önce *start* yazdırılır, ardından file.txt'nin tüm satırları yazdırılır ve ardından *end* yazdırılır
-- awk, her satırı alanların kaydı olarak yorumlar
-- bir veya daha fazla ardışık boşluk veya sekme, alanlar arasında tek bir sınırlayıcı olarak kabul edilir
-- $1, $2, vb. birinci alanı, ikinci alanı vb. temsil eder.
-- $0 tüm giriş satırını temsil eder
-- awk'nin 2 veri türü vardır - dizeler ve tamsayılar
-- awk, değişkeni bağlama göre dahili olarak dönüştürür
-- awk ilişkisel dizileri destekler. örnek ```var[anahtar] = değer```
-- tamsayılarda temel aritmatik işlemler (+-*/%) desteklenir. otomatik artırma(++) ve azaltma(--) da desteklenir.
-
-## 12.1. Hareketler
-- aşağıdakiler gerçekleştirilebilecek birkaç eylemdir
-
-eylem | tanım
---- | ---
-{ $0 yazdır; } | kayıtları yazdır
-{ çıkış; } | programı sonlandırır
-{ sonraki; } | geçerli satırı atlar
-{a=$1; b="X"} | değişken atama
-{ c[$1] = $2 } | dizi değişken ataması
-{if (koşul) { eylem } else if (koşul) { eylem } başka { eylem }} | aksi takdirde koşullar
-{ for (i=1; i < x; i++) { eylem } } | döngü için
-{ for (c'deki öğe) { action } } | bir liste üzerinde yinelenen döngü için
-
-## 12.2. Özel değişkenler
-
-değişken | azalan
---- | ---
-FS | Giriş alanı ayırıcı. değiştirilebilir
-RS | Giriş kayıt ayırıcı. varsayılan değer yeni satırdır. kullanıcı tarafından değiştirilebilir
-OFS | Çıkış alanı ayırıcı. değiştirilebilir
-ORS | Çıkış kayıt ayırıcı. varsayılan değer yeni satırdır. kullanıcı tarafından değiştirilebilir
-NF | Geçerli satırdaki (kayıttaki) alan sayısı. kullanıcı tarafından güncellenemez
-NR | Şu ana kadar işlenen satır sayısı. kullanıcı tarafından güncellenemez
-
-*Not: -F seçeneği, giriş alanı ayırıcısını güncellemek için kullanılabilir -> ```awk -F":"'{ print $1 }' file.txt```*
-
-## 12.3. Örnekler
-- “,” (virgülle) ayrılmış alanları bölün ve üçüncü alanı (3 $) yazdırın<br>```awk -F"," '{print $2}' file.txt```
-- ikinci alan ($2) varsa ve boş değilse, csv'nin 3. alanını yazdırın<br>```awk -F"," '{if ($2)yazdır $3}' file.txt```
-- her satırdaki son alanı yazdır<br>```awk -F"," '{ print $NF }' file.txt```
-- arama modeliyle eşleşen satırdan sonraki satırı yazdır<br>```awk '/pattern/ { i=1; sonraki; } {if(i) {i--; print;}}' file.txt```
-- arama modeliyle eşleşen satırdan sonraki satırı ve 2 satırı yazdır<br>```awk '/regexp/ {i=3;} { if(i) {i--; print;}}' file.txt```
-- *start* ile eşleşen satırdan başlayarak *stop*<br>```awk '/start/,/stop/' file.txt``` ile eşleşen satıra kadar bir dosyadan satırları yazdırın
-- satırları say (wc -l)<br>```awk 'END{print NR}' file.txt```
-- eşleşen satırları yazdır (grep)<br>```awk '/pattern/'```
-- eşleşmeyen satırları yazdır (grep -v)<br>```awk '!/pattern/'```
-- yinelenen ardışık satırları kaldırın (uniq)<br>```awk 'a !~ $0 {print}; {a=$0}' dosya.txt```
-- - dosyanın ilk 10 satırını yazdır (head)<br>```awk 'NR < 11' file.txt```
-- dosyanın son 10 satırını yazdır (kuyruk)<br>```awk '{vect[NR]=$0;} END{for(i=NR-9;i<=NR;i++) {vect[i] yazdır ;}}' dosya.txt```
-- dosyalar tarafından kullanılan toplam bayt sayısını yazdır<br>```ls -l | awk '{ x += $5 } END { print "Toplam bayt: " x }'```
-
-# 13. Komut ikamesi
-- Komut ikamesinde, komutun çıktısı komutun yerini alır
-- bir komutun çıktısı başka bir komutun argümanı olarak kullanılabilir
-- sözdizimi ``` `komut` ```
-
-## 13.1. Örnekler
-- bir komutun çıktısını bir değişkene atayın<br> ``` DATE=`date` ```
-- komutun çıktısını başka bir komutun parametresi olarak kullan<br> ``` vi `grep -l 123 *` ```
-
-# 14. Süreç ikamesi
-- bir komutun girdisi veya çıktısı bir dosya olarak görünebilir. Bu süreç ikamesi olarak bilinir
-- bu teknik, bir komutun girdisi olarak birden çok komutun çıktısını kullanmak istediğimizde kullanışlıdır.
-- süreç ikamesi, çıktıyı yakalamak ve onu bir sürecin girdisine yönlendirmek için de kullanılabilir.
-- şablon - ```<(komut)``` ve ```>(komut)```
-
-## 14.1. Örnekler:
-- iki dosyayı sıralayın ve karşılaştırın<br>
-  ```fark <(dosya1 sırala <(dosya2 sırala)```
-
-- 2 klasörü karşılaştırın<br>
-  ```fark <(ls $ilk_dizin) <(ls $ikinci_dizin)```
-
-# 15. Alt Kabuk
-- bir alt kabuk, bir kabuk tarafından başlatılan bir alt işlemdir
-- bir kabuk komut dosyası çalıştırıldığında, bir alt kabuk oluşturulur ve komut dosyası alt kabukta çalıştırılır
-- ana kabukta tanımlanan değişkenlere, değişken tanımlanırken ```export``` kullanılırsa erişilebilir
-- parantezler kullanılarak alt kabuklar da oluşturulabilir<br>
-  ```(komut1; komut2; komut3)```
-- alt kabuklar, komutları gruplandırmanın uygun bir yoludur.
-- geçici olarak farklı bir dizine geçmek için kullanılabilir
-```bash
-#geçerli dizinde bir şeyler yap
-(cd bazı/diğer/dizin; diğer komut)
-#orijinal dizine geri dön
-```
-- geçerli kabukta bir alt kabuk oluşturmadan bir komut veya komut dosyası çalıştırmak için '.' kullanın. ``` da olduğu gibi. script.sh```
-
-
-# 16. ssh
-- ssh (SSH istemcisi), uzak bir makinede oturum açmak ve uzak bir makinede komutları yürütmek için bir programdır.
-- sözdizimi ```ssh user@host```
-- uzak sunucuda tek bir komut çalıştırma<br>```ssh user@host command_to_run```
-- sunucuya farklı bağlantı noktasıyla oturum açma<br>```ssh -p portnum user@host```
-- ortadaki ana bilgisayar kullanılarak ssh bağlantısı ''ssh -t ulaşılabilir_konakçı ssh erişilemez_konakçı'''
-
-
-# 17. "Kes", "Yapıştır" ve "Birleştir" ile metin düzenleme
-
-## 17.1. '''kes'''
-- ```cut``` komutu her satırdan bölümleri keser ve sonucu standart çıktıya yazar
-- sözdizimi ```cut OPTION [DOSYA]```
-
-seçenek | tanım
---- | ---
--c | seçilecek karakter aralığı
--d | dosyadaki satırdaki her alanı ayıracak sınırlayıcı
--f | yazdırılacak alanlar
-
--c seçeneği kullanıldığında aralıklar belirtilebilir. Her aralık şunlardan biri olabilir:
-aralık tipi | tanım
---- | ---
-N | N. karakter
-N- | Nth karakterinden satırın sonuna kadar
-N-M | N. karakterden M. karaktere
--M | ilk karakterden Mth karakterine
-
-### 17.1.1. Örnekler
-- bir csv dosyasının birinci ve üçüncü sütunlarını yazdırın<br>```cut -f1,3 -d"," file.txt```
-- her satırın ilk 3 karakterini yazdır<br>```cut -c -3 file.txt```
-
-## 17.2. '''yapıştır'''
-- dosya satırlarını birleştirir
-- varsayılan olarak, her dosyadan gelen satırlar sekme ile sınırlandırılır
-- dosya adı yerine '-' kullanıldığında, komut standart girdiden okunur
-- sözdizimi ```yapıştır [SEÇENEK] [DOSYA] [DOSYA]```
-  
-seçenek | tanım
---- | ---
--d | sınırlayıcıyı belirtmek için kullanılır
--s | bir seferde bir dosya yapıştırın
-
-### 17.2.1. Örnekler
-2 dosya alalım - number.txt ve name.txt
-> kedi numarası.txt
-> 1<br>
-> 2<br>
-> 3<br>
-> 4<br>
-
-> kedi adı.txt
-> Alice<br>
-> Bob<br>
-> Charlie<br>
-> Davut<br>
-
-- 2 dosyayı birleştir, ilk dosya ilk sütunu verecek ve ikinci dosya ikinci sütunu verecek<br>```numarayı.txt adını yapıştırın.txt```
-- ','<br>```paste -d"," number.txt name.txt``` ile sınırlandırılmış 2 dosyayı birleştir
-- 2 dosyayı sırayla birleştirin, yani ilk önce yalnızca ilk dosya yazdırılır ve ardından yalnızca ikinci dosya<br>```paste -s number.txt name.txt```
-
-## 17.3. '' katıl '''
-- ortak bir alanda iki dosyanın satırlarını birleştirin
-- sözdizimi ```katıl [SEÇENEKLER] DOSYA1 DOSYA2```
-
-### 17.3.1. Örnekler
-2 dosya alalım - number.txt ve name.txt
-> kedi numarası.txt
-> 1 100<br>
-> 2 101<br>
-> 3 102<br>
-> 4 103<br>
-> 5 104<br>
-
-> kedi adı.txt
-> 1 Alice<br>
-> 2 Bob<br>
-> 3 Charlie<br>
-> 4 Davut<br>
-
-- ilk sütuna göre 2 dosyayı birleştirin<br>```numara.txt adını birleştirin.txt```
-
-# 18. Takma Adlar
-- takma adlar, uzun komutlar için kısa adlardır
-- uzun komutları birden çok kez çalıştırmamız gerektiğinde, takma adlar oluşturmanız önerilir
-- sözdizimi - ```takma ad [-p] [ad[=değer]]```
-- bunları yapılandırma dosyalarında saklayarak kalıcı takma ad oluşturabiliriz
-- bir takma adı geçici olarak atlamak için \ -> ```\ll``` kullanın
-
-- takma ad oluşturma<br>```takma ad='değerler'```
-- takma adı <br>```unalias name``` kaldırılıyor
-- tanımlanmış tüm takma adları yazdır<br>```takma ad -p```
-
-## 18.1. faydalı takma adlar
-```bash
-takma ad gh='geçmiş|grep'
-takma ad cx='chmod +x'
-takma ad ..='cd ..'
-takma ad sl=ls
-takma ad sol='ls -t -1'
-takma ad sayısı='bul . -tip f | wc -l'
-takma ad f='bul . |grep'
-```
-
-# 19. Fonksiyonlar
-- belirli bir görevi yerine getiren komutlar seti
-- defalarca kullanılabilir
-- aynı kodu tekrar tekrar yazmaktan kaçınmaya yardımcı olur
-- döngüleri ve içlerindeki koşulları kullanabilir
-- işlevlere argümanlar iletilebilir
-- ``export -f functionname``` kullanarak, fonksiyonları kabuk betiklerinde kullanılabilir hale getirebiliriz.
-  - *.bashrc* gibi yapılandırma dosyalarına dışa aktarma eklenebilir
-  - İşleri modüler tutmak için ~/.bash_functions adında yeni bir dosya oluşturun ve ardından .bashrc'nizin onu yüklemesini sağlayın
-- sözdizimi<br>
-```bash
-fonksiyon adı () {
-  komutlar
-}
-```
-
-```bash
-işlev_adı () { komutlar; }
-```
-
-## 19.1. faydalı fonksiyonlar
-```bash
-mcd() { mkdir -p "$1"; cd "$1";}
-cdl() { cd "$1"; ls;}
-```
-
-# 20. sıralama
-- satır metin dosyalarını sırala
-
-seçenek | tanım
---- | ---
--r | ters sırada sıralama
--n | numara sırasına göre sırala
--k <n> | n. sütuna göre sırala
--u | kopyaları sırala ve kaldır
-
-# 21. benzersiz
-- tekrarlanan satırları rapor edin veya atlayın
-- giriş dosyası sıralanmalıdır
-
-seçenek | tanım
---- | ---
--c | bir satırın kaç kez tekrarlandığını göster
--d | yalnızca tekrarlanan satırları yalnızca bir kez yazdırır
--u | yalnızca benzersiz satırları yazdırır
--i | büyük/küçük harfe duyarsız karşılaştırma
-
-
-# 22. Koşullar
-## 22.1. eğer başka
-- if-then-else komut satırında desteklenir
-- Sözdizimi
-```bash
-eğer [ koşul1 ]; sonra komut1;
-elif [ koşul2 ]; sonra komut2;
-başka komut3; fi
-```
-
-```bash
-eğer [ koşul1 ]; sonra komut1; elif [ koşul2 ]; sonra komut2; başka komut3; fi
-```
-- farklı koşullar var
-  1. dosya tabanlı koşullar
-
-koşullar | tanım
---- | ---
--a | dosyanın var olup olmadığını kontrol edin
--r | dosyanın var olup olmadığını ve okunabilir olup olmadığını kontrol edin
--w | dosyanın var olup olmadığını ve yazılabilir olup olmadığını kontrol edin
--d | dosyanın var olup olmadığını ve bir dizin olup olmadığını kontrol edin
-
-  2. dize tabanlı koşullar
-
-koşullar | tanım
---- | ---
-== | her iki dizenin de eşit olup olmadığını kontrol edin
-!= | her iki dizenin de eşit olup olmadığını kontrol edin
-\> | ilk dizenin sözlükbilimsel olarak ikinciden daha büyük olup olmadığını kontrol edin
-< | ilk dizenin sözlükbilimsel olarak ikinciden daha küçük olup olmadığını kontrol edin
--n | dizenin 0'dan fazla olup olmadığını kontrol edin
--z | dizenin boş bir dize olup olmadığını kontrol edin
-
-  3. sayıya dayalı koşullar
-
-koşullar | açıklama
---- | ---
--eq | sayıların eşit olup olmadığını kontrol edin
--ne | sayıların eşit olup olmadığını kontrol edin
--gt | ilk sayının ikinciden büyük olup olmadığını kontrol edin
--ge | ilk sayının ikinciden büyük veya ona eşit olup olmadığını kontrol edin
--lt | ilk sayının ikinciden küçük olup olmadığını kontrol edin
--le | ilk sayının ikinciden küçük veya ona eşit olup olmadığını kontrol edin
-
-
-- 0 doğru olarak kabul edilir ve 0'dan büyük sayılar yanlış olarak kabul edilir.
-  - bunun nedeni Unix/Linix'te bir işlem başarıyla sona erdiğinde 0 döndürmesidir.
-
-## 22.2. kısa devre
-- koşulları kullanmanın alternatif bir yolu, mantıksal VE (&&) ve mantıksal VEYA(||) kullanmaktır.
-- sonuç belirlenir belirlenmez mantıksal bir ifadenin değerlendirilmesi durdurulur. Bu kısa devre olarak bilinir.
-- Mantıksal VE durumunda, alt ifade yanlış olur olmaz, ifadenin tamamı yanlış olarak değerlendirilir
-  - *ifade1 && ifade2* durumunda, ifade1 yanlış olarak değerlendirilirse, tüm ifade false olarak değerlendirilir. Yani, ifade2 hiç değerlendirilmez.
-  - &&, komut2'nin yalnızca komut1 başarıyla sona ererse çalıştırılmasını sağlamak için kullanılabilir. örnek ->```komut1 && komut2```
-- Mantıksal VEYA durumunda, alt ifade doğru olur olmaz tüm ifade doğru olarak değerlendirilir
-  - *ifade1 durumunda || ifade2*, ifade1 doğru olarak değerlendirilirse, tüm ifade doğru olarak değerlendirilir. Yani, ifade2 hiç değerlendirilmez.
-  - || komut2'nin yalnızca komut1 başarısız olursa çalıştırılmasını sağlamak için kullanılabilir. örnek -> ```komut1 || komut2```
-
-### 22.2.1. örnek
-- yoksa klasör oluştur
-```bash
-  [ -d ./some/path/folder ] || mkdir /bazı/yol/klasör
-```
-
-- yalnızca klasör varsa dosya oluştur
-```bash
-  cd /some/path/klasör && file.txt'e dokunun
-```
-
-# 23. Döngüler
-## 23.1. döngüler sırasında
-- döngü verilen koşul doğru olduğu sürece çalışır
-- sözdizimi
-  ```bash
-  while [ koşul ]; komutları yapmak; tamamlamak
-  ```
-### 23.1.1. örnek
-- tüm klasörleri .c dosyalarıyla yazdırın<br>
-```bash
-bulmak . -isim *.c | {dosya adını okurken; dirname $dosyaadı yapın; bitti;} | sıralama | uniq # dirname dizin adını döndürür
-```
-
-
-## 23.2. döngüler için
-- döngü, bir değerler listesi veya önceden ayarlanmış sayıda yinelenir
-- sözdizimi
-  ```bash
-  <bir öğe listesi> içindeki <değişken adı> için;do <bir komut> $<değişken adı>;done;
-  ```
-### 23.2.1. örnek
-- dosyaları bir klasörden diğerine kopyalayın
-```bash
-./code/*.txt içindeki i için; cp $i /home/code/yedekleme yapın; tamamlamak
-```
-# 24. Bir gömlek
-
-- ağaç yapısındaki dosyaları ve dizinleri yazdırın<br>```find . | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/|-\1/"```
-- dizinleri ağaç yapısında yazdırın<br>```find . -tip d | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/| - \1/"```
-- ascii tablosuna hızlı erişim<br>```man ascii```
-- 2 dosyada ortak satırları bulun<br>```cat dosya1 dosya2 | uniq -d```
-- dosya1'de dosya2'de bulunmayan satırları bulun<br>```cat dosya1 dosya2 dosya2 | benzersiz -u```
-- en sık kullanılan komutları bulun<br>```geçmiş | kesme -c8- | sıralama | tek -c | sırala -rn | kafa```
-- yalnızca dosya içermeyen dizinleri tekrar tekrar kaldırın<br>```find . -derinlik -type d -exec rmdir {} \;```
-# 25. Daha fazla okuma
+- <br>```sed '/start/ {x;p;x;G}' file.txt``` kalıbıyla eşleşen her satırın önüne ve arkasına boş satır ekleyin.
 -
 
-# 26. Değişen Tarihi
+# 12. Değişme Tarihi
 - Ters kronolojik yolda, yani en son yardım en üsttedir.
 
 İsim | Tarih | Açıklamayı Değiştir
