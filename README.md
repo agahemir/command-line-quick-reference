@@ -453,41 +453,41 @@ end$      | Yalnızca desen satırın sonundaysa desenle eşleşir.
 **Not:** grep, arama deseni bölümünde normal ifadelere sahip olabilir ve aranacak dosyalar bölümünde joker karakterlere sahip olabilir.
 
 # 10. ```find```
-- the ```find``` command is used to search and locate the list of files and directories
-- the list returned will satisfy the conditions used in find command.
-- syntax is ``` find [starting point] [expression] ```
-- ```-exec [command]``` can be used to run command on the files located by ```find```
+- ```find``` komutu dosya ve dizin listesini aramak ve bulmak için kullanılır.
+- Döndürülen liste, find komutunda kullanılan koşulları karşılayacaktır.
+- Sözdizimi bu şekildedir. ``` find [starting point] [expression] ```
+- ```-exec [command]``` , ```find``` tarafından bulunan dosyalarda komut çalıştırmak için kulanılabilir.
 
-## 10.1. Examples
-- find files with specific name<br> ```find . -name demo.txt```
-- find files with a specific pattern<br> ``` find ./Codes -name *.cpp```
-- find directories with specific name<br> ```find . -name Codes -type d```
-- find files with permission as 777 and change permissions to 644<br> ```find . -type f -perm 0777 -print -exec chmod 644 {} \;```
-- find and remove files<br>```find . -type f -name "*.bkp" -exec rm -f {};```
+## 10.1. Örnekler
+- Belirli bir isime sahip dosyaları bulmak için:<br> ```find . -name demo.txt```
+- Belirli bir kalıba sahip dosyaları bulmak için:<br> ``` find ./Codes -name *.cpp```
+- Belirli ada sahip dizinleri bulmak için:<br> ```find . -name Codes -type d```
+- İzini 777 olrak ayarlanmış dosyaları bul ve onların izinlerini 644 olarak değiştir:<br> ```find . -type f -perm 0777 -print -exec chmod 644 {} \;```
+- Bul ve dosyaları sil:<br>```find . -type f -name "*.bkp" -exec rm -f {};```
 
-# 11. ```sed``` filter and transfobrm text
-## 11.1. Overview
-- looks for pattern and edits them
-- works on both files and stdin
-- original files is not updated
-- results are put into standard output
-- syntax is ``` sed 'instructions' file```
-- instruction is of format ``` '[address]command/regex/replace/modifier' ``` 
-  - example - '5,15s/abc/ABC/g' -> this will substitute abc with ABC in lines 5 to 15. 
-    - modifier g specifies that all occurences of abc in line will be replaced with ABC
-- when address is used, the lines belonging to the address are examined/modified. -> ```sed '1,100 s/A/a/' file.txt```. this restricts substition to first 100 lines.
-- By default all the lines are printed. When '-n' flag is used, this behavior is suppressed. Nothing will be printed unless an explicit request to print is found.
-- A pattern can be used as a address -> ```sed -n '/start/,/stop/ p' file.txt```
-- When '!' is used, the command is run outside of the address -> ```sed -n '/match/ !p' file.txt```
+# 11. ```sed``` Metni filtrele ve dönüştür(çevir)
+## 11.1. Genel Bakış
+- Kalıp arar ve kalıbı düzenler
+- Hem dosyalarda hem de stdin'de çalışır
+- Orijinal dosyalar güncellenmez
+- Sonuçlar standart çıktıya atanır.
+- Sözdizimi bu şekildedir: ``` sed 'instructions' file```
+- Komutun biçimi şu şekildedir. ``` '[adres]komut/düzenli_ifade/değiştir/değiştirici' ``` 
+  - Örneğin: '5,15s/abc/ABC/g' -> 5 ila 15 satırlarında abc'yi ABC ile değiştirecektir.
+    - Buradaki g değiştiricisi, satırdaki tüm abc oluşumlarının ABC ile değiştirileceğini belirtir.
+- Adres kullanıldığında adrese ait satırlar incelenir/değiştirilir. -> ```sed '1,100 s/A/a/' file.txt```. Örneğin bu komut, değiştirmeyi ilk 100 satırla sınırlar.
+- Varsayılan olarak tüm satırlar yazdırılır. '-n' bayrağı kullanıldığında bu davranış bastırılır. Açık bir yazdırma isteği bulunmadıkça hiçbir şey yazdırılmayacaktır.
+- Adres olarak bir kalıp kullanılabilir-> ```sed -n '/start/,/stop/ p' file.txt```
+- '!' kullanıldığı zaman, komut adresin dışında çalıştırılır. -> ```sed -n '/match/ !p' file.txt```
 
-command | description
+Komut | Açıklama
 ---     | ---
-d       | delete
-p       | print
-s       | substitute
-q       | quit
-a       | insert a line after pattern
-i       | insert a line before pattern
+d       | siler
+p       | çıktı verir (yazdır)
+s       | yerine geçirir
+q       | çık
+a       | satırdan sonra bir kalıp ekle
+i       | satırdan önce bir kalıp ekle
 c       | change a line
 y       | transform
 
